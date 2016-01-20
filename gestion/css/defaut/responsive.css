@@ -1,0 +1,72 @@
+/* ============ style adjustments for high density devices */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+
+} /* ============ End adjustments for high density devices */
+
+
+/* ============ layouts for large screens */
+@media only screen and (min-width: 1024px) {
+
+} /* ============ End for large screens */
+
+
+/* ============ layouts for tablet landscape screens */
+@media only screen and (max-width: 1024px) {
+
+
+         
+} /* ============ End for tablet landscape screens */
+
+
+/* ============ layouts for portrait tablet et modern smartphones */
+@media only screen and (max-width: 768px) {
+	
+	h0{
+		font-size:1em;
+
+	}
+	
+	#niveau0 a{
+		font-size:0.9em;
+
+	}
+	#navigationPage{
+		width:25%;
+	}
+	#mainContentPage{
+		width:75%;
+		left:25%;
+	}
+	#footerContent {
+		width:75%;
+	}
+	#selectAdministrateur {
+		display:none;	
+	}
+
+	h1 {
+		line-height:16px;	
+		clear:both;
+		float:none;
+		display:block;
+	}
+	#navigationPage li a {
+		font-size:0.9em;
+	}
+	
+	
+} /* ============ End for portrait tablet  et modern smartphones */
+
+
+/* ============ layouts for small screens - Phones portrait */ 
+@media only screen and (max-width: 480px) {
+
+
+} /* ============ End for small screens */
+
+
+
+/* ============ Print */
+@media print {
+                
+} /* ============ End print */

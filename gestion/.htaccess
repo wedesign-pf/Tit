@@ -1,0 +1,7 @@
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+Options -Indexes
+SetEnv REGISTER_GLOBALS 0

@@ -1,0 +1,1 @@
+{if $thisSite->current_scriptTPL ne ""} {include file="{$thisSite->current_scriptTPL}"}{/if}

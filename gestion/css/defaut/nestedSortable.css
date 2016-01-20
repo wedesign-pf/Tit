@@ -1,0 +1,79 @@
+.placeholder {
+	outline: 1px dashed #4ed26a;
+	background-color: #f6fdf7;
+}
+
+.mjs-nestedSortable-error {
+	outline: 1px dashed #00a8e2;
+	background: #CAE4F2;
+	color:#00a8e2;
+	text-align:center;
+	font-size:13px;
+	vertical-align:bottom;
+		padding: 3px;
+}
+.mjs-nestedSortable-error:after {
+	content:"Emplacement interdit";
+}
+
+ol {
+	padding: 3px 15px;
+	padding-bottom:5px;
+	padding-left:25px;
+}
+
+ol.sortable,ol.sortable ol {
+	list-style-type: none;
+}
+
+.sortable li div {
+	border: 1px solid #CAE4F2;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	cursor: move;
+	margin: 0;
+	padding: 3px;
+	margin-bottom:2px;
+	background: #ffffff;
+
+	font-size:13px;
+	line-height:17px;
+}
+.sortable li div.nivMenu {
+	background: #CAE4F2;
+}
+
+.sortable li div:hover {
+	color:#ffffff;
+	background: #9acee0}
+
+.sortable li.mjs-nestedSortable-collapsed > ol {
+	display: none;
+}
+
+.sortable li.mjs-nestedSortable-branch > div > .disclose {
+	display: inline-block;
+}
+.disclose {
+	display: none;
+	cursor: pointer;
+	width: 15px;
+	margin-left:5px;
+
+}
+
+.itemTitle {
+		margin-left:28px;
+}
+
+.sortable li.mjs-nestedSortable-branch > div > .itemTitle {
+	margin-left:5px;
+}
+
+.deleteMenu {
+	float: right;
+	cursor: pointer;
+	width: 15px;
+	line-height:17px;
+}

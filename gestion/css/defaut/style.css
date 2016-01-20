@@ -1,0 +1,396 @@
+.progress-bar {
+  background-color: #1abc9c;
+  border-radius: 5px;
+  height:20px;
+  padding:5px 10px;
+}
+
+.btnAction {
+	background-color: #9acee0;
+	border: none;
+	color: #fff;
+	font-weight: normal;
+	height:30px;
+	line-height:30px;
+	padding:0 10px;
+	margin-left:10px;
+	cursor:pointer;
+	font-size: 14px;
+}
+
+.btnAction:hover {
+	background-color: #00a8e2;
+}
+
+#btnAnnuler {
+	background-color: #ff6666;
+}
+#btnAnnuler:hover {
+	background-color: #ffb2b2;
+}
+#btnAnnuler:before {
+	font-family: FontAwesome;
+	content: "\f00d";
+	margin-right:5px;
+}
+
+#btnValider {
+	background-color: #4ed26a;
+}
+#btnValider:hover {
+	background-color: #a6e8b4;
+}
+#btnValider:before {
+	font-family: FontAwesome;
+	content: "\f00c";
+	margin-right:5px;
+}
+
+#btnAppliquer ,
+#btnAppliquerAndAjout {
+	background-color: #4ebed2;
+}
+#btnAppliquer:hover ,
+#btnAppliquerAndAjout:hover {
+	background-color: #a6dee8;
+}
+#btnAppliquer:before ,
+#btnAppliquerAndAjout:before {
+	font-family: FontAwesome;
+	content: "\f0c7";
+	margin-right:5px;
+}
+
+#btnDelete {
+	background-color: #00a8e2;
+	height:25px;
+	line-height:25px;
+	padding:0 10px;
+}
+#btnDelete:hover {
+	background-color: #9acee0;
+}
+#btnDelete:before {
+	font-family: FontAwesome;
+	content: "\f014";
+	margin-right:5px;
+}
+
+#btnAjouter {
+	background-color: #00a8e2;
+	padding:0 10px;
+	margin-left:0px;
+	margin-right:10px;
+}
+#btnAjouter:hover {
+	background-color: #9acee0;
+}
+#btnAjouter:before {
+	font-family: FontAwesome;
+	content: "\f067";
+	margin-right:5px;
+}
+
+#btnFiltre {
+	height:25px;
+	line-height:25px;
+	padding:0 20px;
+	margin:0;
+}
+
+
+
+
+.btn1 {
+	background-color: #00a8e2;
+}
+
+.btn1:hover {
+	background-color: #9acee0;
+}
+
+
+#niveau0{
+	display:block;
+	padding: 0;
+	margin:0;
+	position:relative;
+}
+
+#niveau0 ul, #niveau0 li {
+	list-style: none;
+	text-indent: 0;
+	text-transform: none;
+	text-decoration: none;
+	padding: 0;
+	margin:0;
+	display:block;
+	position:relative;
+}
+
+#niveau0 li {
+
+}
+
+#niveau0 a {
+	text-decoration: none;
+	color: #000;
+	padding: 0px 15px;
+	position:relative;
+	display:block;
+	height:40px;
+	line-height:40px;
+}
+	
+#niveau0 a:hover {
+	color: #fff;
+	background-color: #000;
+}
+
+#niveau0 .a0_actif {
+	color: #fff;
+	background-color: rgba(0,168,226,1);
+}
+
+
+
+
+#navigationPage a {
+	display: block;
+	line-height: 18px;
+	font-size: 13px;
+	padding-top: 7px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 5px;
+	color: #000;
+	text-decoration: none;
+    -webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+
+}
+
+#navigationPage a.n2:before {
+	font-family: FontAwesome;
+	content: "\f0da";
+	float:left;
+    color: #fff;
+    padding-right:5px;
+    
+}
+
+#navigationPage a:hover {
+	color: rgba(0,168,226,1);
+   /* padding-left: 10px;*/
+}
+#navigationPage a.n2:hover:before {
+	font-family: FontAwesome;
+	content: "\f0da";
+	float:left;
+    color: rgba(0,168,226,1);
+}
+
+#navigationPage a.n1 {
+	color: rgba(0, 168, 226, 0.6);
+	background-color: rgba(202,228,242,1);
+
+}
+#navigationPage a.n1:hover {
+	color: rgba(0,168,226,1);
+
+}
+
+#navigationPage li a.n1:after {
+	font-family: FontAwesome;
+	content: "\f0d7";
+	float:right;
+}
+#navigationPage li a.n1.open:after {
+	font-family: FontAwesome;
+	content: "\f0d8";
+	float:right;
+}
+
+
+#navigationPage a.actif {
+    color: rgba(0,168,226,1);
+    font-weight: bold;
+}
+
+#navigationPage a.actif:before {
+	font-family: FontAwesome;
+	content: "\f0da";
+	float:left;
+    color: rgba(0,168,226,1);
+}
+
+
+.superAdmin {
+	color: #00a8e2;
+
+}
+
+#showID {
+	padding:5px 15px;
+	color: #9acee0;	
+}
+
+.counter {
+	font-size:12px;
+	color: #aaa;
+}
+
+.xxx {
+	background-color: #9acee0;
+	padding:5px 15px;	
+	float:right;
+}
+
+.sliderMin,.sliderMax{
+	color:#747474;
+}
+
+.sliderValue {
+	padding:0px 5px;
+	border: 2px solid #2DA5DA;
+}
+
+.submit {
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1pt;
+	text-align: center;
+	cursor: pointer;
+	color: #000;
+	background-color: #FFFFFF;
+	margin-bottom: 4px;
+}
+
+.submit:hover {
+	color: #FFF;
+	background-color: #FF3300;
+	border: 1px solid #FF3300;
+}
+
+.submit2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.5pt;
+	height: 22px;
+	text-align: center;
+	cursor: pointer;
+	background-color: #efefef;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	font-size: 11px;
+}
+.submit2:hover {
+	color: #FF3300;
+	background-color: #FFFFFF;
+}
+
+.bouton {
+	font-weight: normal;
+
+	text-align: center;
+	cursor: pointer;
+	color: #ffff00;
+	background-color: #ff0000;
+	padding: 1px 10px;
+	height: auto;
+	font-size: 11px;
+	text-decoration: none;
+	border: 1px solid #c0c0c0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px; 
+}
+
+
+.bouton:hover {
+	color: #FF3300;
+}
+
+.choixLangue {
+    background-color: #fff;
+    border: 3px solid #CAE4F2;
+    color: #00A8E2;
+    text-decoration: none;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    line-height: 18px;
+    height: 25px;
+    width: 25px;
+    margin: 7px 0px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+.choixLangue:last-child {
+	margin-left:5px;
+}
+.choixLangue:hover {
+	background-color: #fff;
+	border: 3px solid #00A8E2;
+    color: #00A8E2;
+}
+.choixLangue.actif {
+	background-color: #00a8e2;
+	color: #fff;
+	border: 3px solid #00a8e2;
+}
+
+#droitsAdmin table tr,
+#droitsAdmin table td,
+#droitsAdmin table {
+	border: 1px solid #9acee0;
+	/*color: #404040;*/
+}
+
+#droitsAdmin tr td {
+	padding:3px 5px;
+}
+
+
+#droitsAdmin .dniveau0 {
+	background-color: #f1f7fa;
+	
+}
+#droitsAdmin .dniveau1 {
+	background-color: #FDF2F6;
+}
+#droitsAdmin .dniveauH td {
+	text-align:center;
+}
+
+#droitsAdmin .dniveau2 td {
+	text-align:center;
+}
+#droitsAdmin .dniveauH td {
+	text-align:center;
+}
+
+.checklistItem {
+    padding: 5px 10px;
+    border-top:1px solid #DDDDDD;
+}
+
+.checklistItem:hover {
+    background-color: #CAE4F2;
+    cursor:pointer;
+}
+
+
+#blocUpload {
+    margin-top:10px;
+	font-size:0.8em;
+	line-height: 1.1em;
+	/*color: #404040;*/
+}

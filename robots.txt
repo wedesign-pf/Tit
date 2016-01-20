@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /_temp/
+Disallow: /client/
+Disallow: /commun/
+Disallow: /gestion/
+Disallow: /logs/
+Disallow: /smarty/
+Disallow: /init.php
+
+Sitemap: http://www.tahitiislandstravel.com/sitemap.xml

@@ -1,0 +1,3 @@
+﻿templates: [
+	{ title: 'xxx', content: '' },
+],

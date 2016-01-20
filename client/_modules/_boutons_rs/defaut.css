@@ -1,0 +1,38 @@
+
+.boutons_rs .fa-circle-facebook {
+   color: rgba(0,79,159,1); 
+}
+.boutons_rs .fa-circle-twitter {
+   color: rgba(60,179,240,1); 
+}
+.boutons_rs .fa-circle-google-plus {
+   color: rgba(208,23,23,1); 
+}
+.boutons_rs .fa-circle-instagram {
+   color: rgba(221,182,107,1); 
+}
+.boutons_rs .fa-circle-youtube {
+   color: rgba(204,24,30,1); 
+}
+
+.boutons_rs a:hover {
+   opacity:0.5;
+}
+
+.boutons_rs .fa-stack {
+    width:1.8em;
+}
+
+.boutons_rs .fa-stack-2x {
+    font-size: 1.8em;
+}
+
+.boutons_rs .fa-stack-1x {
+    font-size: 1.0em;    
+    line-height:1.8em;
+}
+
+
+.retrouveznoussur {
+	font-size: 0.9em;
+}

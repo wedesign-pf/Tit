@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>nestedSortable jQuery Plugin</title>
+    <meta content="Demo page of the nestedSortable jQuery Plugin" name=
+    "description">
+    <meta content="Manuele J Sarfatti" name="author">
+    <style type="text/css">
+		html {
+			background-color: #fff;
+		}
+		
+		
+		
+		.placeholder {
+			outline: 1px dashed #4183C4;
+		}
+		
+		.mjs-nestedSortable-error {
+			background: #fbe3e4;
+			border-color: transparent;
+		}
+		
+		#tree {
+			width: 550px;
+			margin: 0;
+		}
+		
+		ol {
+			max-width: 450px;
+			padding-left: 25px;
+		}
+		
+		ol.sortable,ol.sortable ol {
+			list-style-type: none;
+		}
+		
+		.sortable li div {
+			border: 1px solid #d4d4d4;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			cursor: move;
+			border-color: #D4D4D4 #D4D4D4 #BCBCBC;
+			margin: 0;
+			padding: 3px;
+		}
+		
+		li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
+			border-color: #999;
+		}
+		
+		.disclose, .expandEditor {
+			cursor: pointer;
+			width: 20px;
+			display: none;
+		}
+		
+		.sortable li.mjs-nestedSortable-collapsed > ol {
+			display: none;
+		}
+		
+		.sortable li.mjs-nestedSortable-branch > div > .disclose {
+			display: inline-block;
+		}
+		
+		.sortable span.ui-icon {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.menuDiv {
+			background: #EBEBEB;
+		}
+		
+		.itemTitle {
+			vertical-align: middle;
+
+		}
+		
+		.deleteMenu {
+			float: right;
+			cursor: pointer;
+		}
+	
+		ol {
+			margin-top: 0;
+			margin-bottom: 1em;
+		}
+		
+
+
+    </style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="jquery.mjs.nestedSortable.js"></script>
+	
+	<script>
+		$().ready(function(){
+			var ns = $('ol.sortable').nestedSortable({
+				forcePlaceholderSize: true,
+				handle: 'div',
+				helper:	'clone',
+				items: 'li',
+				opacity: .6,
+				placeholder: 'placeholder',
+				revert: 250,
+				tabSize: 25,
+				tolerance: 'pointer',
+				toleranceElement: '> div',
+				maxLevels: 4,
+				isTree: true,
+				expandOnHover: 700,
+				startCollapsed: false,
+				change: function(){
+					console.log('Relocated item');
+				}
+			});
+
+			$('.disclose').on('click', function() {
+				$(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass('mjs-nestedSortable-expanded');
+				$(this).toggleClass('ui-icon-plusthick').toggleClass('ui-icon-minusthick');
+			});
+			
+		
+			$('.deleteMenu').click(function(){
+				var id = $(this).attr('data-id');
+				$('#menuItem_'+id).remove();
+			});
+				
+			$('#serialize').click(function(){
+				serialized = $('ol.sortable').nestedSortable('serialize');
+				$('#serializeOutput').text(serialized+'\n\n');
+			})
+	
+			$('#toHierarchy').click(function(e){
+				hiered = $('ol.sortable').nestedSortable('toHierarchy', {startDepthCount: 0});
+				//hiered = generateArbo(hiered);
+				hiered = JSON.stringify( hiered );
+				(typeof($('#toHierarchyOutput')[0].textContent) != 'undefined') ?
+				$('#toHierarchyOutput')[0].textContent = hiered : $('#toHierarchyOutput')[0].innerText = hiered;
+			})
+	
+			$('#toArray').click(function(e){
+				arraied = $('ol.sortable').nestedSortable('toArray', {startDepthCount: 0});
+				//arraied = dump(arraied);
+				arraied = JSON.stringify( arraied );
+				(typeof($('#toArrayOutput')[0].textContent) != 'undefined') ?
+				$('#toArrayOutput')[0].textContent = arraied : $('#toArrayOutput')[0].innerText = arraied;
+			});
+		});			
+	
+	function generateArbo(arr,level) {
+			var dumped_text = "";
+			if(!level) level = 0;
+	
+			//The padding given at the beginning of the line.
+			var level_padding = "";
+			for(var j=0;j<level+1;j++) level_padding += "    ";
+	
+			if(typeof(arr) == 'object') { //Array/Hashes/Objects
+				for(var item in arr) {
+					var value = arr[item];
+	
+					if(typeof(value) == 'object') { //If it is an array,
+						dumped_text += level_padding + "'" + item + "' ...\n";
+						dumped_text += dump(value,level+1);
+					} else {
+						dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+					}
+				}
+			} else { //Strings/Chars/Numbers etc.
+				dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+			}
+			return arr;
+		}
+		
+		function dump(arr,level) {
+			var dumped_text = "";
+			if(!level) level = 0;
+	
+			//The padding given at the beginning of the line.
+			var level_padding = "";
+			for(var j=0;j<level+1;j++) level_padding += "    ";
+	
+			if(typeof(arr) == 'object') { //Array/Hashes/Objects
+				for(var item in arr) {
+					var value = arr[item];
+	
+					if(typeof(value) == 'object') { //If it is an array,
+						dumped_text += level_padding + "'" + item + "' ...\n";
+						dumped_text += dump(value,level+1);
+					} else {
+						dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+					}
+				}
+			} else { //Strings/Chars/Numbers etc.
+				dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+			}
+			return dumped_text;
+		}
+	</script>
+</head>
+
+<body>
+   
+
+		<ol class="sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
+		   <li style="display: list-item;" class="mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_M10">
+			   <div class="menuDiv">
+				   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+					<span></span>
+				   </span>
+				   <span>
+						<span data-id="M10" class="itemTitle">Menu10</span>
+						<span data-id="M10" class="deleteMenu ui-icon ui-icon-closethick">
+							<span></span>
+						</span>
+				   </span>
+			   </div>
+		   		<ol>
+				   <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_11">
+					   <div class="menuDiv">
+						   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+							<span></span>
+						   </span>
+						   <span>
+								<span data-id="11" class="itemTitle">RUB11</span>
+								<span data-id="11" class="deleteMenu ui-icon ui-icon-closethick">
+									<span></span>
+								</span>
+						   </span>
+					   </div>
+					   <ol>
+					   <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_111">
+						   <div class="menuDiv">
+							   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+								<span></span>
+							   </span>
+							   <span>
+									<span data-id="111" class="itemTitle">SRUB111</span>
+									<span data-id="111" class="deleteMenu ui-icon ui-icon-closethick">
+										<span></span>
+									</span>
+							   </span>
+						   </div>
+						</li>
+						
+					</ol>
+			   		</li>
+			    <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_12">
+				   <div class="menuDiv">
+					   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+						<span></span>
+					   </span>
+					   <span>
+							<span data-id="12" class="itemTitle">RUB12</span>
+							<span data-id="12" class="deleteMenu ui-icon ui-icon-closethick">
+								<span></span>
+							</span>
+					   </span>
+				   </div>
+						   <ol>
+						   <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_121">
+							   <div class="menuDiv">
+								   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+									<span></span>
+								   </span>
+								   <span>
+										<span data-id="121" class="itemTitle">SRUB121</span>
+										<span data-id="121" class="deleteMenu ui-icon ui-icon-closethick">
+											<span></span>
+										</span>
+								   </span>
+							   </div>
+									   <ol>
+									   <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_1211">
+										   <div class="menuDiv">
+											   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+												<span></span>
+											   </span>
+											   <span>
+													<span data-id="1211" class="itemTitle">SSRUB1211</span>
+													<span data-id="1211" class="deleteMenu ui-icon ui-icon-closethick">
+														<span></span>
+													</span>
+											   </span>
+										   </div>
+										</li>
+									<li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_1212">
+									   <div class="menuDiv">
+										   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+											<span></span>
+										   </span>
+										   <span>
+												<span data-id="1212" class="itemTitle">SSRUB1212</span>
+												<span data-id="1212" class="deleteMenu ui-icon ui-icon-closethick">
+													<span></span>
+												</span>
+										   </span>
+									   </div>
+									</li>
+									
+								</ol>
+							</li>
+						<li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_122">
+						   <div class="menuDiv">
+							   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+								<span></span>
+							   </span>
+							   <span>
+									<span data-id="122" class="itemTitle">SRUB122</span>
+									<span data-id="122" class="deleteMenu ui-icon ui-icon-closethick">
+										<span></span>
+									</span>
+							   </span>
+						   </div>
+						</li>
+						
+					</ol>
+				</li>
+				<li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_13">
+				   <div class="menuDiv">
+					   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+						<span></span>
+					   </span>
+					   <span>
+							<span data-id="13" class="itemTitle">RUB13</span>
+							<span data-id="13" class="deleteMenu ui-icon ui-icon-closethick">
+								<span></span>
+							</span>
+					   </span>
+				   </div>
+				</li>
+		   	</ol>
+		   </li>
+		<li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_M20">
+		<div class="menuDiv">
+		   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+			<span></span>
+		   </span>
+		   <span>
+				<span data-id="M20" class="itemTitle">Menu 20</span>
+				<span data-id="M20" class="deleteMenu ui-icon ui-icon-closethick">
+					<span></span>
+				</span>
+		   </span>
+		</div>
+				<ol>
+				   <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_21">
+					   <div class="menuDiv">
+						   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+							<span></span>
+						   </span>
+						   <span>
+								<span data-id="21" class="itemTitle">RUB 21</span>
+								<span data-id="21" class="deleteMenu ui-icon ui-icon-closethick">
+									<span></span>
+								</span>
+						   </span>
+					   </div>
+			   		</li>
+			    <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_22">
+				   <div class="menuDiv">
+					   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+						<span></span>
+					   </span>
+					   <span>
+							<span data-id="22" class="itemTitle">RUB 22</span>
+							<span data-id="22" class="deleteMenu ui-icon ui-icon-closethick">
+								<span></span>
+							</span>
+					   </span>
+				   </div>
+				   <ol>
+					   <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_221">
+						   <div class="menuDiv">
+							   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+								<span></span>
+							   </span>
+							   <span>
+									<span data-id="221" class="itemTitle">SRUB221</span>
+									<span data-id="221" class="deleteMenu ui-icon ui-icon-closethick">
+										<span></span>
+									</span>
+							   </span>
+						   </div>
+						</li>
+						
+					</ol>
+				</li>
+				<li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_23">
+				   <div class="menuDiv">
+					   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+						<span></span>
+					   </span>
+					   <span>
+							<span data-id="23" class="itemTitle">RUB 23</span>
+							<span data-id="23" class="deleteMenu ui-icon ui-icon-closethick">
+								<span></span>
+							</span>
+					   </span>
+				   </div>
+				</li>
+		   	</ol>
+		</li>
+		 <li style="display: list-item;" class="mjs-nestedSortable-leaf" id="menuItem_M30">
+		<div class="menuDiv">
+		   <span title="Click to show/hide children" class="disclose ui-icon ui-icon-minusthick">
+			<span></span>
+		   </span>
+		   <span>
+				<span data-id="M30" class="itemTitle">Menu 30</span>
+				<span data-id="M30" class="deleteMenu ui-icon ui-icon-closethick">
+					<span></span>
+				</span>
+		   </span>
+		</div>
+		</li>
+
+	   </ol>
+<!-- [{"id":"11"},{"id":"12","children":[{"id":"121","children":[{"id":"1211"},{"id":"1212"}]},{"id":"122"}]},{"id":"13"}] -->	  
+<!-- [{"id":"21"},{"id":"22"},{"id":"23"}] -->
+<!-- [{"id":"M10","children":[{"id":"11"},{"id":"12","children":[{"id":"121","children":[{"id":"1211"},{"id":"1212"}]},{"id":"122"}]},{"id":"13"}]},{"id":"M20","children":[{"id":"21"},{"id":"22"},{"id":"23"}]},{"id":"M30"}] --> 
+
+<!--[{"id":"M10","children":[{"id":"11","children":[{"id":"111"}]},{"id":"12","children":[{"id":"121","children":[{"id":"1211"},{"id":"1212"}]},{"id":"122"}]},{"id":"13"}]},{"id":"M20","children":[{"id":"21"},{"id":"22","children":[{"id":"221"}]},{"id":"23"}]},{"id":"M30"}]-->
+        <h3>Try the custom methods:</h3>
+
+        <p><br>
+        <input id="serialize" name="serialize" type="submit" value=
+        "Serialize"></p>
+        <pre id="serializeOutput">
+		</pre>
+
+        <p><input id="toArray" name="toArray" type="submit" value=
+        "To array"></p>
+        <pre id="toArrayOutput">
+		</pre>
+
+        <p><input id="toHierarchy" name="toHierarchy" type="submit" value=
+        "To hierarchy"></p>
+        <pre id="toHierarchyOutput">
+		</pre>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+#langues{
+float:right;
+}
+#langues li{
+	margin: 0;
+	padding: 0;
+	text-indent: 0px;
+	list-style-type: none;
+}
+
+#langues a{
+	display:block;
+	background-color: #212121;
+	padding:6px 14px;
+	text-decoration: none;
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	color: rgba(255, 255, 255, 1);
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+	font-weight: bold;
+	font-style: italic;
+}
+
+
+#langues a:hover {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.5);
+}

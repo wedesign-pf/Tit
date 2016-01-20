@@ -1,0 +1,2 @@
+Envoyer email aux annonceurs automatiquement, tous les jours, semaines, mois
+CRON

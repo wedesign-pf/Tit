@@ -1,0 +1,274 @@
+body, table, td {
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	font-weight: normal;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #404040;
+}
+
+body,html {
+	height:100%;
+	min-height: 100%;
+}
+
+body {
+	line-height:1.4em;
+	font-size: 1.4em;
+}
+.borderRightBGBlack {
+	border-right-color: rgba(0,168,226,0.6);
+	border-right-width: 1px;
+	border-right-style: solid;
+}
+.borderLeftBGBlack {
+	border-left-color: rgba(0,168,226,0.6);
+	border-left-width: 1px;
+	border-left-style: solid;
+}
+.borderTopBGBlack {
+	border-top-color: rgba(0,168,226,0.6);
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+.borderBottomBGBlack {
+	border-bottom-color: rgba(0,168,226,0.6);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+.borderRight {
+	border-right-color: rgba(0,168,226,0.2);
+	border-right-width: 1px;
+	border-right-style: solid;
+}
+.borderLeft {
+	border-left-color: rgba(0,168,226,0.2);
+	border-left-width: 1px;
+	border-left-style: solid;
+}
+.borderTop {
+	border-top-color: rgba(0,168,226,0.2);
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+.borderBottom {
+	border-bottom-color: rgba(0,168,226,0.2);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+.borderBottom2 {
+	border-bottom-color: rgba(255,255,255,0.3);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+
+
+#header {
+	width:100%;
+	height:80px;
+	position:fixed;
+	margin:0;
+	padding:0;
+	z-index:100;
+}
+
+#header_1 {
+	background-color: #000;
+	height:40px;
+	color: #fff;
+}
+
+	#logo {
+		height: 40px;
+	}
+	
+	h0 {
+		font-size:1.4em;
+		line-height:40px;
+	}
+	
+	#infos_header {
+	font-size: 0.8em;
+	line-height: 15px;
+	padding-top: 5px;
+	height: 40px;
+
+	}
+	#infos_header a {
+		color: #fff;
+		text-decoration: none;
+	}
+	
+#header_2 {
+	background-color: rgba(202,228,242,1);
+	height:40px;
+}
+
+	.divHeader_1 {
+		color: #fff;
+		font-size: 12px;
+		height:40px;
+		line-height:40px;
+		overflow:hidden;
+		-webkit-appearence:none;
+		position:relative;
+		padding:0px 10px;
+		
+	}
+
+	
+	#selectAdministrateur {
+		color: #fff;
+		text-transform: uppercase;
+		font-size: 12px;
+		height:40px;
+		line-height:40px;
+		overflow:visible;
+		-webkit-appearence:none;
+		position:relative;
+	}
+
+
+	 #menuAdministrateur {
+			margin:0;
+			list-style-type:none;
+			font-size: 12px;
+			height:40px;
+			line-height:40px;
+			width:150px;
+			overflow:hidden;
+	}
+	
+	#selectAdministrateur li, #selectAdministrateur ul {
+		margin: 0;
+		padding: 0;
+		text-indent: 0px;
+		list-style-type: none;
+		display:block;
+	}
+
+	 #menuAdministrateur a {
+		color: #fff;
+		text-decoration: none;
+		padding:0px 10px;
+		
+	}
+	
+	
+#mainContent {
+	position:relative;	
+
+	width: 100%;
+	height: 100%;
+}
+
+#navigationPage {
+    background-color: rgba(210,229,237,0.30);
+    position: fixed;
+    width: 20%;
+    float: left;
+    min-height: 100%;
+    margin-top: 80px;
+}
+
+#navigationPage li, #navigationPage ul {
+	margin: 0;
+	padding: 0;
+	text-indent: 0px;
+	list-style-type: none;
+	display:block;
+    background-color: #ffffff;
+}
+
+#mainContentPage {
+	background-color: #ffffff;
+	position:relative;
+	left:20%;
+	width:80%;
+	top:80px;
+}
+
+#headerContent {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    z-index: 5;
+    position: relative;
+    height: 40px;
+}
+
+	h1 {
+	margin: 0;
+	padding: 0;
+	color: rgba(0,168,226,1);
+	font-size: 1em;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	}
+
+	
+#explicationsPage {	
+	color: rgba(0,168,226,0.6);
+	font-size:0.8em;
+	line-height:1.2em;
+	background-color: #ffffff; 
+}
+
+#contentPage {
+	position:relative;	
+	z-index:2;
+	padding-bottom:40px;
+	background-color: #ffffff;
+	width:100%;
+}
+
+#contentMaj {
+
+}
+
+#footerContent {
+	position:fixed;
+	bottom:0;
+	background-color: rgba(210,229,237,0.30);
+	position: fixed;
+	clear:both;
+	height: 40px;
+	padding-top:5px;
+	width:80%;
+}
+
+
+
+#loaderForm {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	background-color: rgba(255,255,255,0.7);
+	z-index: 1000;
+	background-image: url(loaders/295-64.GIF);
+	background-position: center center;
+	background-repeat: no-repeat;
+	display:none;	
+}
+
+#loaderBtnAction, .loaderBtn {
+	width: 32px;
+	height:32px;
+	background-image: url(loaders/295.GIF);
+	background-position: center center;
+	background-repeat: no-repeat;
+	display:none;	
+}
+	
+.requestLink {
+	cursor:pointer;	
+}
+.requestLink:hover {
+	color:rgba(255,255,255,0.5);	
+}

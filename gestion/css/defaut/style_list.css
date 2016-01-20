@@ -1,0 +1,221 @@
+
+/* LISTE */
+
+
+#tableList table td {
+	border: 1px solid #ddd;
+	padding:5px 5px;
+	font-size: 0.9em;
+
+}
+
+#tableList table thead tr td {
+	background-color: #00a8e2;
+	/*background-image: -webkit-linear-gradient(90deg,#CAE4F2 0%,#00a8e2 100%);
+	background-image: -moz-linear-gradient(90deg,#CAE4F2 0%,#00a8e2 100%);
+	background-image: linear-gradient(180deg,#CAE4F2 0%,#00a8e2 100%);*/
+	color: #ffffff;
+	font-weight: normal;
+	border: 1px solid #9acee0;
+	overflow:hidden;
+}
+
+#tableList table thead tr td a, #tableList table thead tr td span  {
+	color:  #ffffff;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+#tableList table thead tr td a:hover {
+	color:  #ffffff;
+	text-decoration: none;
+}
+
+#tableList table thead tr td.order_ASC,#tableList table thead tr td.order_DESC {
+	color:  #ffffff;
+	font-weight: bold;
+}
+
+#tableList table thead tr td.order_ASC:before {
+	font-family: FontAwesome;
+	content: "\f0de";
+	font-size:0.8em;
+	margin-right:5px;
+
+}
+#tableList table thead tr td.order_DESC:before {
+	font-family: FontAwesome;
+	content: "\f0dd";
+	font-size:0.8em;
+	margin-right:5px;
+}
+
+
+#tableList table tbody tr td {
+	/*color: #404040;*/
+	cursor:pointer;
+	overflow:hidden;
+}
+
+#tableList table tbody tr:nth-child(even) td {
+	background-color: rgba(210,229,237,0.30);
+}
+
+#tableList table tbody tr td input[type=radio] {
+	vertical-align:top
+}
+
+
+#tableList table tbody tr td a {	
+	text-decoration: none;
+	font-weight: normal;
+	/*color: #404040;*/
+}
+
+#tableList table tbody tr td a:hover {	
+	text-decoration: none;
+	font-weight: normal;
+	color: #00a8e2;
+}
+
+
+#tableList table tbody tr:hover td {	
+	background-color: #CAE4F2;
+
+}
+#tableList table tbody tr:hover td:not(.notGoMaj) {	
+	color: #00a8e2;
+}
+
+.arrowDown:hover,
+.arrowUp:hover {	
+	color: #00a8e2;
+}
+
+#tableList table thead tr td.orderby:hover {
+	cursor:pointer;
+	color: #ffffff;
+}
+
+
+#nbElements {
+	font-size: 0.9em;
+	/*color: #404040;*/
+	line-height:30px
+}
+
+#maxElements {
+	font-size: 0.9em;
+	color: #00a8e2;
+	line-height:30px
+}
+
+#allDel:hover {
+	cursor:pointer;
+	color: #ffffff;
+}
+
+#footerList {
+	/*color: #404040;*/
+	padding:10px 5px;
+}
+
+#footerList .infos{
+	font-size: 0.8em;
+
+}
+
+#footerList a{
+	color: #9acee0;
+	text-decoration: none;
+	font-weight: normal;
+	border: 1px solid #9acee0;
+	text-decoration: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding:0px 2px;
+	margin-right:5px;
+	
+}
+#footerList a:hover{
+	color: #00a8e2;
+	border: 1px solid #00a8e2;	
+	text-decoration: none;
+	font-weight: normal;
+}
+#footerList a.actif{
+	color: #00a8e2;
+	border: 1px solid #00a8e2;
+	font-weight: bold;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+#datasTable tr.placeholder {
+ display: block;
+  background: red;
+  position: relative;
+  margin: 0;
+  padding: 0;
+ border: 5px solid #00a8e2;
+
+}
+
+#datasTable tr.placeholder:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-left-color: #00a8e2;
+    margin-top: -5px;
+    right: -10px;
+    border-right: none;
+}
+
+#filtreList {
+
+}
+
+
+#infosParent {
+	 border: 1px solid #f1f7fa;
+	 background-color:#ffffff;
+	 padding:3px 3px;
+	 display:inline-block;
+	 height: 31px;
+	 line-height: 25px;
+}
+#infosParent span {
+	 padding:3px 10px;
+	 overflow:hidden;
+}
+
+#infosParent span:first {
+	 border-right: 1px solid #f1f7fa;
+}
+
+.actionInListInProgress {
+	display:none;
+}
+
+.bar_stats {
+	line-height:10px;
+	font-size:12px;	
+}
+
+.bar_stats .bar{
+	clear:both;
+	float:none;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.bar_stats .bar div{
+	clear:both;
+	float:left;
+	margin-right:5px;
+	height:10px;
+}

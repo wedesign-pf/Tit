@@ -1,0 +1,66 @@
+.texte {
+    text-align:justify;  
+    overflow:hidden;  
+}
+
+.contenu {
+    overflow:hidden; 
+}
+
+.texte b,
+.texte strong {
+    color: rgba(0,79,159,1);
+}
+
+.filesAndLInks {
+    color: rgba(0,79,159,1);
+}
+
+.filesAndLInks a {
+  font-size: 0.9em;  
+  color: rgba(227,6,19,1);
+  text-decoration: none;
+}
+
+.filesAndLInks a:hover {
+   color: rgba(227,6,19,0.5);
+    text-decoration: none;
+}
+
+
+.listFiles {
+    background-color:rgba(224,238,252,1);
+     border-right:2px solid #fff;
+}
+
+.listLinks {
+    background-color:rgba(224,238,252,1);
+    border-right:2px solid #fff;
+}
+
+.listImages .image  {
+	height:150px;
+	overflow:hidden;
+}
+
+.listImages .image1  {
+	height:400px;
+}
+
+.listImages .image2  {
+	height:250px;
+}
+
+.listVideos .video  {
+	height:300px;
+	overflow:hidden;
+}
+
+.listVideos .video1  {
+	height:300px;
+}
+
+.listVideos .video2  {
+	height:300px;
+}
+
