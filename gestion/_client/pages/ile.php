@@ -1,12 +1,16 @@
 <?php
 $myTable=$thisSite->PREFIXE_TBL_CLI . "iles";
-$orderby="chrono DESC";
+$orderby="chrono ASC";
 $actionsPage=array("ajouter","supprimer","move");
 $actionsPageOnlySA=array("supprimer");
 $listCols=array();
 $listCols[]=array("field"=>"id","label"=>"#","align"=>"center","width"=>"5%");
 $listCols[]=array("field"=>"actif","label"=>"Actif","align"=>"center","width"=>"5%","update"=>0);
 $listCols[]=array("field"=>"titre","label"=>"Titre","align"=>"left","width"=>"");
+$listCols[]=array("field"=>"ile_image","label"=>"<i class='icon-append fa fa-15x fa-picture-o'>","align"=>"center","width"=>"5%", "action"=>"image"); 
+$listCols[]=array("field"=>"ile_fichier","label"=>"<i class='icon-append fa fa-15x fa-file-o'>","align"=>"center","width"=>"5%", "action"=>"file");
+$listCols[]=array("field"=>"ile_lien","label"=>"<i class='icon-append fa fa-15x fa-link'>","align"=>"center","width"=>"5%", "action"=>"link");
+$listCols[]=array("field"=>"ile_video","label"=>"<i class='icon-append fa fa-15x fa-video-camera'>","align"=>"center","width"=>"5%", "action"=>"video");
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "list-init.php");
@@ -25,6 +29,8 @@ if($__POST["actionInList"]=="delete") { // suppression
 				$myDelete->where="id=$idDel";
 				$result=$myDelete->execute();
 				$deleteDone=true;
+                
+                deleteMediasbyIdParent("produit",$idDel);
 			}
 		}
 	}
@@ -33,13 +39,38 @@ if($__POST["actionInList"]=="delete") { // suppression
 		
 } // Fin suppression 
 ?>
+<?php
+// FILTRES /////////////////////////////////////// ????
+include(DOS_INCPAGES_ADMIN  . "list-prepareFiltres.php");
 
+// Filtre Type
+$obj_article = new article("archipel");
+$obj_article->fields="id,titre";
+$result=$obj_article->query();
+$tab_archipels=array();
+foreach($result as $row){
+   $tab_archipels[$row["id"]]=$row["titre"];
+}
+$newfield = new select();
+$newfield->field="F__archipel";
+$newfield->widthLabel=0;
+$newfield->label="Archipel";
+$newfield->allItems=true;
+$newfield->items=$tab_archipels;
+$newfield->value=$F__archipel;
+$newfield->javascript="onChange='submitFiltres()'";
+$newfield->add();
+
+// FIN FILTRES //////////////////////////////////////////
+?>
 <?php
 // CHARGEMENT LISTE //////////////////////////////////////////
 $formList = new formList();
 $formList->tables=$myTable;
 $formList->fields="*";
 $formList->orderby=$orderby;
+$formList->where="lg='" . $myAdmin->LANG_DATAS . "'";
+if($F__archipel!="" && $F__archipel!="allItems") {  $formList->where.=" AND archipel='" . $F__archipel . "'"; }
 $formList->clause_where();
 $count_datas = $formList->get_datas();
 

@@ -32,6 +32,8 @@ if (isset($_SESSION["myAdmin"]) && $__POST["request"]!="initMyAdmin")  {
 $myAdmin->LANG_DATAS="en";
 $myAdmin->LIST_LANG_CONTROLE=array($myAdmin->LANG_DATAS =>$myAdmin->LIST_LANG_DATAS[$myAdmin->LANG_DATAS]); 
 
+$myAdmin->catIntitule=array("lab"=>"Intitulé","tit"=>"Titre","btn"=>"Bouton","msg"=>"Message","div"=>"Divers"); 
+
 // GESTION DES ERREURS
 /*if ($thisSite->SERVER == "prod" && $thisSite->errorLog==1) {
 	error_reporting(0);

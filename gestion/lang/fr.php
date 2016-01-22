@@ -11,6 +11,7 @@ $datas_lang["mois_short"]= array('Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Jul'
 $datas_lang["tous"]= "Tous";
 
 $datas_lang["access_public"]= "site public";
+$datas_lang["access_bdd"]= "BdD";
 $datas_lang["annuler"]= "Annuler";
 $datas_lang["valider"]= "Valider";
 $datas_lang["appliquer"]= "Appliquer";

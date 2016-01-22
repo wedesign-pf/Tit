@@ -280,6 +280,7 @@ $newfield->upload=true;
 $newfield->browse=true;
 $newfield->disabled=false;
 $newfield->showImage=true;
+$fieldMedia->upload=true;
 //$newfield->javascript="onChange='alert(\"ddddd\")'";
 $newfield->add();
 
@@ -296,6 +297,8 @@ $fieldMedia->extensionsAuthorized=""; //  si vide > auto les ext. par défaut si
 $fieldMedia->dimMax="600x400"; // dimension Max des fichiers images
 $fieldMedia->dimThumbs=array("100x100","200x200"); // dimension des vignettes à créer
 $fieldMedia->legendeEnabled=true;
+$fieldMedia->upload=true;
+$fieldMedia->uploadDirect=true;
 $fieldMedia->add();
 
 $fieldMedia = new mediaFile();

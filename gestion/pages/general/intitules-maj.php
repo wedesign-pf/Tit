@@ -61,6 +61,16 @@ $newfield->multiLang=false;
 $newfield->label="Explications";
 $newfield->tooltip="Explications sur l'utilisation de l'intitulé";
 $newfield->add();
+
+$newfield = new select();
+$newfield->field="cat";
+$newfield->label="Catégorie";
+$newfield->multiLang=false;
+$newfield->items=$myAdmin->catIntitule;
+$newfield->noneItem=true;
+$newfield->add();
+$newfield->rule("required",true);
+
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "maj-prepare.php");

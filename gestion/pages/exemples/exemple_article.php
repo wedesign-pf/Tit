@@ -27,6 +27,7 @@ $datasArticle["fields_show"]["video"]="";
 $datasArticle["fields_show"]["tags"]="";
 
 $datasArticle["image_dimMax"] = ""; // par exemple: "1024x768"
+$datasArticle["image_dimThumbs"]=array(); // si pas défini, prend les valeurs par défaut du site
 $datasArticle["image_maxElements"] = 0; // nombre d'images  autorisée (0 = illimité) 
 $datasArticle["video_maxElements"] = 0; // nombre de videos autorisée (0 = illimité) 
 $datasArticle["file_maxElements"] = 0; // nombre de fichiers autorisé (0 = illimité) 

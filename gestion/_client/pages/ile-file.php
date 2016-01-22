@@ -1,7 +1,8 @@
 <?php
-$fieldMedia = new mediaVideo();
-$fieldMedia->field="produit_video";
-$fieldMedia->label=$datas_lang["lienVideo"];
+$fieldMedia = new mediaFile();
+$fieldMedia->field="ile_fichier";
+$fieldMedia->label=$datas_lang["fichier"];
+$fieldMedia->startFolder="iles/files"; 
 $fieldMedia->multiLangType=true; 
 $fieldMedia->legendeEnabled=true;
 $fieldMedia->maxElements=0;

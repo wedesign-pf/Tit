@@ -161,6 +161,7 @@ if(!is_numeric($datasArticle["idPageAssocie"]) && $datasArticle["idPageAssocie"]
         $newfield->label=$datasArticle["fields_show"]["titre"];
     }
     $newfield->variablesAuthorized=true;
+    if($datasArticle["fields_show"]["titre_tooltip"]!="") { $newfield->tooltip=$datasArticle["fields_show"]["titre_tooltip"]; }
     $newfield->add();
     $newfield->rule("required",true);
 
@@ -338,7 +339,11 @@ if(array_key_exists("image",$datasArticle["fields_show"]) ) {
     $fieldMedia->multiLangType=false; 
     $fieldMedia->multiLangDestination=false; 
     $fieldMedia->dimMax=$datasArticle["image_dimMax"]; 
-    $fieldMedia->dimThumbs=$thisSite->DEFAULT_DIM_VIGS;
+    if($datasArticle["image_dimThumbs"]=="") {
+        $fieldMedia->dimThumbs=$thisSite->DEFAULT_DIM_VIGS;
+    } else {
+        $fieldMedia->dimThumbs=$datasArticle["image_dimThumbs"];
+    }
     $fieldMedia->insideForm=true;
     $fieldMedia->fileRequired=false;
     $fieldMedia->legendeEnabled=$datasArticle["image_legendeEnabled"];

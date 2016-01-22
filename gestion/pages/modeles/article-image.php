@@ -9,7 +9,11 @@ $fieldMedia->startFolder=$datasArticle["name"];
 $fieldMedia->multiLangType=false; 
 $fieldMedia->multiLangDestination=false; 
 $fieldMedia->dimMax=$datasArticle["image_dimMax"]; 
-$fieldMedia->dimThumbs=$thisSite->DEFAULT_DIM_VIGS;
+if($datasArticle["image_dimThumbs"]=="") {
+    $fieldMedia->dimThumbs=$thisSite->DEFAULT_DIM_VIGS;
+} else {
+    $fieldMedia->dimThumbs=$datasArticle["image_dimThumbs"];
+}
 $fieldMedia->fileRequired=false;
 $fieldMedia->legendeEnabled=$datasArticle["image_legendeEnabled"];
 if($datasArticle["image_maxElements"]>0) { $fieldMedia->maxElements=$datasArticle["image_maxElements"]; }

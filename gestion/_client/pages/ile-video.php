@@ -1,6 +1,6 @@
 <?php
 $fieldMedia = new mediaVideo();
-$fieldMedia->field="produit_video";
+$fieldMedia->field="ile_video";
 $fieldMedia->label=$datas_lang["lienVideo"];
 $fieldMedia->multiLangType=true; 
 $fieldMedia->legendeEnabled=true;

@@ -485,7 +485,7 @@ class formMaj{
                         $myDeleteM->table=$thisSite->PREFIXE_TBL_GEN . "medias";
                         $myDeleteM->where="id=:id";
                         $myDeleteM->whereValue["id"]=array($idMedia,PDO::PARAM_STR);
-                        $result=$myDeleteM->execute(1);
+                        $result=$myDeleteM->execute();
                     }
                     
                     continue;

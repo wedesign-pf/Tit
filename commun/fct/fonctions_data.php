@@ -4,15 +4,22 @@ function getTexte($id) {
     
     global $thisSite;
     
-	$mySelect = new mySelect(__FILE__);
-	$mySelect->tables=$thisSite->PREFIXE_TBL_GEN . "textes";
-	$mySelect->fields="texte";
-	$mySelect->where="id=:id AND lg=:lg";
-	$mySelect->whereValue["id"]=array($id,PDO::PARAM_STR);
-	$mySelect->whereValue["lg"]=array($thisSite->current_lang,PDO::PARAM_STR);
-	$result=$mySelect->query();
+//  $mySelect = new mySelect(__FILE__);
+//	$mySelect->tables=$thisSite->PREFIXE_TBL_GEN . "textes";
+//	$mySelect->fields="texte";
+//	$mySelect->where="id=:id AND lg=:lg";
+//	$mySelect->whereValue["id"]=array($id,PDO::PARAM_STR);
+//	$mySelect->whereValue["lg"]=array($thisSite->current_lang,PDO::PARAM_STR);
+//	$result=$mySelect->query();
+//	$row = current($result); 
+//	return stripslashes($row["texte"]);
+    
+    $obj_article = new article("textes");
+    $obj_article->where="id=" . $id ."  AND lg='". $thisSite->current_lang . "'";
+    $result=$obj_article->query();
 	$row = current($result); 
-	return stripslashes($row["texte"]);
+	return $row;
+    
 }
 
 // Renvoi une image Divers

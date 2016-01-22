@@ -1,12 +1,11 @@
 <?php
-$myTable=$thisSite->PREFIXE_TBL_GEN . "intitules";
+$myTable=$thisSite->PREFIXE_TBL_GEN . "textes";
 $orderby="id DESC";
 $actionsPage=array("ajouter","supprimer");
 $actionsPageOnlySA=array("ajouter","supprimer");
 $listCols=array();
 $listCols[]=array("field"=>"id","label"=>"#","align"=>"center","width"=>"5%");
-$listCols[]=array("field"=>"code","label"=>"Code","align"=>"left","width"=>"15%");
-$listCols[]=array("field"=>"titre","label"=>"Intitulé","align"=>"left","width"=>"");
+$listCols[]=array("field"=>"titre","label"=>"Titre","align"=>"left","width"=>"");
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "list-init.php");
@@ -35,18 +34,6 @@ if($__POST["actionInList"]=="delete") { // suppression
 ?>
 <?php
 // FILTRES /////////////////////////////////////// ????
-include(DOS_INCPAGES_ADMIN  . "list-prepareFiltres.php");
-
-$newfield = new select();
-$newfield->field="F__cat";
-$newfield->widthLabel=0;
-$newfield->label="Catégorie";
-$newfield->allItems=true;
-$newfield->items=$myAdmin->catIntitule;
-$newfield->value=$F__cat;
-$newfield->javascript="onChange='submitFiltres()'";
-$newfield->add();
-
 // FIN FILTRES //////////////////////////////////////////
 ?>
 <?php
@@ -55,7 +42,6 @@ $formList = new formList();
 $formList->tables=$myTable;
 $formList->fields="*";
 $formList->where="lg='" . $myAdmin->LANG_DATAS . "'";
-if($F__cat!="" && $F__cat!="allItems") {  $formList->where.=" AND cat='" . $F__cat . "'"; }
 $formList->orderby=$orderby;
 // Filtres /////////////////////////////////////// ????
 //

@@ -78,9 +78,10 @@
 <div id="header_1">
 	<a id="logo" class="left borderRightBGBlack" href="{$smarty.const.PAGE_ACCUEIL}"><img src="{$smarty.const.DOS_SKIN_ADMIN}images/logo_page.png" /></a>
 	<h0 class="left pls">{$TITRE_SITE}</h0>
-	<div id="infos_header" class="right txtright plrm borderLeftBGBlack">{$dateCurrent} - {$heureCurrent}<br><a href="{$thisSite->RACINE}" target="_blank" >{$datas_lang.access_public} <i class="fa fa-15x fa-angle-right" ></i></a>
+	<div id="infos_header" class="right txtright plrm borderLeftBGBlack">{$dateCurrent} - {$heureCurrent}<br>
+    {if $myAdmin->PRIVILEGE eq 9}<a href="{$thisSite->DOMAINE}/phpmyadmin/index.php?db={$thisSite->NOM_BDD}" target="_blank" class="mrs" >{$datas_lang.access_bdd}</a>{/if} 
+    <a href="{$thisSite->RACINE}" target="_blank" >{$datas_lang.access_public}</a>
     </div>
-	 
 	<div id="selectAdministrateur" class="right borderLeftBGBlack">
 	<ul id="menuAdministrateur">
 		<li class='left menuA'>
