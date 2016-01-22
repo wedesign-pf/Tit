@@ -10,10 +10,19 @@
     <section><div class="row">{$field_titre}</div></section>
     <section><div class="row">{$field_sous_titre}</div></section>
     <section><div class="row">{$field_lat_lgn}</div></section>
+    <section><div class="row">{$field_duree}</div></section>
     <section><div class="row">{$field_resume}</div></section>
-    <section><div class="row">{$field_produit_fichier}</div><hr></section>
-    <section><div class="row">{$field_produit_lien}</div><hr></section>
-    <section><div class="row">{$field_produit_video}</div><hr></section>
+    <section><div class="row">{$field_produit_image}</div></section>
+    <section><div class="row">{$field_produit_fichier}</div></section>
+    <section><div class="row">{$field_produit_lien}</div></section>
+    <section><div class="row">{$field_produit_video}</div></section>
+    <fieldset><legend>Informations commerciales</legend>
+    	<section><div class="row">{$field_contrat}</div></section>
+        <section><div class="row">{$field_contact}</div></section>
+        <section><div class="row">{$field_email}</div></section>
+        <section><div class="row">{$field_telephone}</div></section>
+        <section><div class="row">{$field_prestataire}</div></section>
+    </fieldset>
 {/block}
 {block name=javascript}
 <script type="text/javascript" >

@@ -13,7 +13,8 @@ $fieldMedia->maxElements=0;
 $fieldMedia->upload=true; 
 $fieldMedia->uploadDirect=true; 
 $fieldMedia->add();
-$mainSelect=0;
+
+$datasMedia["choix1"] = array("label"=>"<i class='fa fa-star'></i>","update"=>1); 
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "medias-init.php");

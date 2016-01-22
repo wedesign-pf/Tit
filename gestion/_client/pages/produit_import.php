@@ -68,7 +68,7 @@ if( $fic!="") {
 		$ligne = str_replace("\"", "'", $ligne);
 		
 		$code="";
-		$ile="";
+		$iles="";
 		$titre="";
 		$cat="";
 		$souscat="";
@@ -76,18 +76,17 @@ if( $fic!="") {
 		$contact="";
 		$email="";
 		$telephone="";
-        $qui="";
         $duree="";
         $prestataire="";
         //
         $id_cat="";
         $id_souscat="";
-		$id_ile="";
+		$id_iles="";
         
         $i=0;        
         if($_POST["type"]==23) { // HEBERGEMENTS
             $code=addslashes(utf8_encode($ligne[$i]));$i++;
-            $ile=addslashes(utf8_encode($ligne[$i]));$i++;
+            $iles=addslashes(utf8_encode($ligne[$i]));$i++;
             $titre=addslashes(utf8_encode($ligne[$i]));$i++;
             $cat=addslashes(utf8_encode($ligne[$i]));$i++;
             $souscat=addslashes(utf8_encode($ligne[$i]));$i++;
@@ -102,7 +101,8 @@ if( $fic!="") {
             $telephone=addslashes(utf8_encode($ligne[$i]));$i++;
         }
         if($_POST["type"]==24) { // EXCURSIONS
-            $ile=addslashes(utf8_encode($ligne[$i]));$i++;
+            $code=addslashes(utf8_encode($ligne[$i]));$i++;
+            $iles=addslashes(utf8_encode($ligne[$i]));$i++;
             $titre=addslashes(utf8_encode($ligne[$i]));$i++;
             $duree=addslashes(utf8_encode($ligne[$i]));$i++;
             $cat=addslashes(utf8_encode($ligne[$i]));$i++;
@@ -119,7 +119,8 @@ if( $fic!="") {
             $telephone=addslashes(utf8_encode($ligne[$i]));$i++;
         }
         if($_POST["type"]==25) { // SERVICES
-            $ile=addslashes(utf8_encode($ligne[$i]));$i++;
+            $code=addslashes(utf8_encode($ligne[$i]));$i++;
+            $iles=addslashes(utf8_encode($ligne[$i]));$i++;
             $titre=addslashes(utf8_encode($ligne[$i]));$i++;
             $cat=addslashes(utf8_encode($ligne[$i]));$i++;
             $contrat=addslashes(utf8_encode($ligne[$i]));$i++;
@@ -128,7 +129,7 @@ if( $fic!="") {
             $i++;
             $i++;
             $i++;
-            $qui=addslashes(utf8_encode($ligne[$i]));$i++;
+            $prestataire=addslashes(utf8_encode($ligne[$i]));$i++;
             $contact=addslashes(utf8_encode($ligne[$i]));$i++;
             $email=addslashes(utf8_encode($ligne[$i]));$i++;
             $telephone=addslashes(utf8_encode($ligne[$i]));$i++;
@@ -136,7 +137,7 @@ if( $fic!="") {
         
 
         $code=trim($code);
-        $ile=trim($ile);
+        $iles=trim($iles);
         $titre=trim($titre);
         $cat=trim($cat);
         $souscat=trim($souscat);
@@ -144,13 +145,48 @@ if( $fic!="") {
         $contact=trim($contact);
         $email=trim($email);
         $telephone=trim($telephone);
+        $prestataire=trim($prestataire);
         
         if($titre=="") { continue; }
 
         $id_cat=$tab_cat_produit[$cat];
         $id_souscat=$tab_souscat_produit[$souscat];
-        $id_ile=$tab_iles[$ile];
         
+        $l_iles=explode(",",$iles);
+        $sepi="";
+        foreach($l_iles as $ile){ 
+            $ile=trim($ile);
+            if($ile!="") {
+    
+                $id_ile=$tab_iles[$ile];
+                
+                if($id_ile=="") {
+                    $newIdx=$PDO->getNextID("g_cli_iles");
+                    $chronox=$PDO->getNextChrono("g_cli_iles");
+                    foreach($myAdmin->LIST_LANG_DATAS as $clg=>$nlg){ 
+                        $myInsert = new myInsert(__FILE__);
+                        $myInsert->table="g_cli_iles";
+                        $myInsert->field["id"]=$newIdx;
+                        $myInsert->field["lg"]=$clg;
+                        $myInsert->field["chrono"]=$chronox;  
+                        $myInsert->field["login_add"]=$myAdmin->LOGIN;                  
+                        $myInsert->field["datetime_add"]=date('Y-m-d H:i:s');
+                        $myInsert->field["actif"]=1;
+                        $myInsert->field["titre"]=$ile;
+                        $id_ile=$myInsert->execute();
+                    }
+                    $tab_iles[$ile]=$id_ile;
+                    $msgAvertissements[$cpt]["message"].="Ajout Ile ($ile)" . $sep_avertissement;
+      
+                }
+            
+                if($id_ile!="") {
+                    $id_iles.=$sepi . $id_ile;
+                    $sepi=",";
+                }
+            }
+        }
+   
         if($_POST["type"]==25) { $id_souscat=""; }
         
         if($id_cat=="" && $cat!="") {
@@ -194,30 +230,9 @@ if( $fic!="") {
             $tab_souscat_produit[$souscat]=$id_souscat;
             $msgAvertissements[$cpt]["message"].="Ajout Sous catégorie ($souscat)" . $sep_avertissement;
         }
-        
 
-        if($id_ile=="" && $ile!="") {
-            
-            $newIdx=$PDO->getNextID("g_cli_iles");
-            $chronox=$PDO->getNextChrono("g_cli_iles");
-            foreach($myAdmin->LIST_LANG_DATAS as $clg=>$nlg){ 
-                $myInsert = new myInsert(__FILE__);
-                $myInsert->table="g_cli_iles";
-                $myInsert->field["id"]=$newIdx;
-                $myInsert->field["lg"]=$clg;
-                $myInsert->field["chrono"]=$chronox;  
-                $myInsert->field["login_add"]=$myAdmin->LOGIN;                  
-                $myInsert->field["datetime_add"]=date('Y-m-d H:i:s');
-                $myInsert->field["actif"]=1;
-                $myInsert->field["titre"]=$ile;
-                $id_ile=$myInsert->execute();
-            }
-            $tab_iles[$ile]=$id_ile;
-            $msgAvertissements[$cpt]["message"].="Ajout Ile ($ile)" . $sep_avertissement;
-        } 
-        
 
-       // if($code=="") { $msgAvertissements[$cpt]["message"].="Code obligatoire" . $sep_avertissement; }
+        if($code=="") { $msgAvertissements[$cpt]["message"].="Code obligatoire" . $sep_avertissement; }
         if($titre=="") { $msgErreurs[$cpt]["message"].="Titre obligatoire" . $sep_avertissement; }
 
 		if ($msgErreurs[$cpt]=="") {  
@@ -239,14 +254,13 @@ if( $fic!="") {
                     $myInsert->field["code"]=$code;
                     $myInsert->field["actif"]=1;
                     $myInsert->field["titre"]=$titre;
-                    $myInsert->field["ile"]=$id_ile;
+                    $myInsert->field["ile"]=$id_iles;
                     $myInsert->field["cat"]=$id_cat;
                     $myInsert->field["souscat"]=$id_souscat;
                     $myInsert->field["contrat"]=$contrat;
                     $myInsert->field["contact"]=$contact;
                     $myInsert->field["email"]=$email;
                     $myInsert->field["telephone"]=$telephone;
-                    $myInsert->field["qui"]=$qui;
                     $myInsert->field["duree"]=$duree;
                     $myInsert->field["prestataire"]=$prestataire;
                     $result=$myInsert->execute();

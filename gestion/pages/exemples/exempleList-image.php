@@ -11,6 +11,7 @@ $fieldMedia->dimMax="600x400"; // dimension Max des fichiers images
 $fieldMedia->dimThumbs=array("100x100","200x"); // dimension des vignettes à créer
 $fieldMedia->add();
 
+$datasMedia["choix1"] = array("label"=>"<i class='fa fa-star'></i>","update"=>1); 
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "medias-init.php");

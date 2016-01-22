@@ -9,8 +9,11 @@ $listCols[]=array("field"=>"code","label"=>"Code","align"=>"left","width"=>"7%")
 if($__POST["F__ile"]=="" || $__POST["F__ile"]=="allItems") { $listCols[]=array("field"=>"ile","label"=>"Ile","align"=>"left","width"=>"10%"); }
 if($__POST["F__type"]!="" && $__POST["F__type"]!="allItems" && ($__POST["F__cat"]=="" || $__POST["F__cat"]=="allItems")) { $listCols[]=array("field"=>"cat","label"=>"Catégorie","align"=>"left","width"=>"12%"); }
 $listCols[]=array("field"=>"titre","label"=>"Titre","align"=>"left","width"=>"");
-$listCols[]=array("field"=>"produit_image","label"=>"<i class='icon-append fa fa-15x fa-picture-o'>","align"=>"center","width"=>"5%", "action"=>"image"); 
 $listCols[]=array("field"=>"texte","label"=>"Textes","align"=>"center","width"=>"5%", "action"=>"texte"); 
+$listCols[]=array("field"=>"produit_image","label"=>"<i class='icon-append fa fa-15x fa-picture-o'>","align"=>"center","width"=>"5%", "action"=>"image"); 
+$listCols[]=array("field"=>"produit_fichier","label"=>"<i class='icon-append fa fa-15x fa-file-o'>","align"=>"center","width"=>"5%", "action"=>"file");
+$listCols[]=array("field"=>"produit_lien","label"=>"<i class='icon-append fa fa-15x fa-link'>","align"=>"center","width"=>"5%", "action"=>"link");
+$listCols[]=array("field"=>"produit_video","label"=>"<i class='icon-append fa fa-15x fa-video-camera'>","align"=>"center","width"=>"5%", "action"=>"video");
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "list-init.php");
@@ -149,7 +152,7 @@ $formList->where="lg='" . $myAdmin->LANG_DATAS . "'";
 if($F__type!="" && $F__type!="allItems") {  $formList->where.=" AND type='" . $F__type . "'"; }
 if($F__cat!="" && $F__cat!="allItems") { $formList->where.=" AND cat='" . $F__cat . "'"; }
 if($F__souscat!="" && $F__souscat!="allItems") { $formList->where.=" AND souscat='" . $F__souscat . "'"; }
-if($F__ile!="" && $F__ile!="allItems") { $formList->where.=" AND ile='" . $F__ile . "'"; }
+if($F__ile!="" && $F__ile!="allItems") { $formList->where.=" AND ile LIKE '%" . $F__ile . "%'"; }
 $formList->clause_where();
 $count_datas = $formList->get_datas();
 

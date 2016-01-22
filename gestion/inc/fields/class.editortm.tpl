@@ -62,7 +62,7 @@ $(document).ready(function () {
 			});
 	    },
 		plugins: [
-			 "{$autoresize} heading importcss link autolink paste emoticons image charmap hr lists preview  anchor visualblocks code nonbreaking table template textcolor contextmenu",
+			 "{$autoresize} importcss link autolink paste emoticons image charmap hr lists preview  anchor visualblocks code nonbreaking table template textcolor contextmenu",
 	   ]
 	 });
 	

@@ -16,7 +16,6 @@ if($datasArticle["image_maxElements"]>0) { $fieldMedia->maxElements=$datasArticl
 $fieldMedia->upload=$datasArticle["upload"]; 
 $fieldMedia->uploadDirect=$datasArticle["uploadDirect"]; 
 $fieldMedia->add();
-$mainSelect=0;
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "medias-init.php");

@@ -145,7 +145,7 @@ $tab_iles=array();
 foreach($result as $row){
    $tab_iles[$row["id"]]=$row["titre"];
 }
-$newfield = new select();
+$newfield = new selectM();
 $newfield->field="ile";
 $newfield->multiLang=false;
 $newfield->label="Ile";
@@ -184,6 +184,12 @@ $newfield->label="Local. Google Map";
 $newfield->placeholder="-17.640112, -149.427854";
 $newfield->add();
 
+$newfield = new input();
+$newfield->field="duree";
+$newfield->multiLang=false;
+$newfield->label="Durée";
+$newfield->add();
+
 $newfield = new editor();
 $newfield->field="resume";
 $newfield->label="Résumé";
@@ -193,36 +199,81 @@ $newfield->startFolder="produits";
 $newfield->variablesAuthorized=true;
 $newfield->add();
 
-
-$fieldMedia = new mediaFile();
-$fieldMedia->field="produit_fichier";
-$fieldMedia->label=$datas_lang["fichier"];
+$fieldMedia = new mediaImage();
+$fieldMedia->field="produit_image";
+$fieldMedia->label=$datas_lang["image"];
+$fieldMedia->startFolder="produits"; 
+$fieldMedia->multiLangType=false; 
+$fieldMedia->multiLangDestination=false; 
+$fieldMedia->dimMax="1280x0"; 
+$fieldMedia->dimThumbs=$thisSite->DEFAULT_DIM_VIGS;
 $fieldMedia->fileRequired=false;
-$fieldMedia->insideForm=true;
-$fieldMedia->startFolder="produits/files"; 
-$fieldMedia->multiLangType=true; 
-$fieldMedia->extensionsAuthorized=""; 
 $fieldMedia->legendeEnabled=true;
-$fieldMedia->upload=true;
+$fieldMedia->maxElements=0;
+$fieldMedia->upload=true; 
+$fieldMedia->uploadDirect=true; 
+$fieldMedia->insideForm=true;
 $fieldMedia->add();
 
-$fieldMedia = new mediaLink();
-$fieldMedia->field="produit_lien";
-$fieldMedia->label=$datas_lang["lien"];
-$fieldMedia->fileRequired=false;
-$fieldMedia->insideForm=true;
-$fieldMedia->multiLangType=true;
-$fieldMedia->legendeEnabled=true;
-$fieldMedia->add();
+//$fieldMedia = new mediaFile();
+//$fieldMedia->field="produit_fichier";
+//$fieldMedia->label=$datas_lang["fichier"];
+//$fieldMedia->fileRequired=false;
+//$fieldMedia->insideForm=true;
+//$fieldMedia->startFolder="produits/files"; 
+//$fieldMedia->multiLangType=true; 
+//$fieldMedia->extensionsAuthorized=""; 
+//$fieldMedia->legendeEnabled=true;
+//$fieldMedia->upload=true;
+//$fieldMedia->add();
+//
+//$fieldMedia = new mediaLink();
+//$fieldMedia->field="produit_lien";
+//$fieldMedia->label=$datas_lang["lien"];
+//$fieldMedia->fileRequired=false;
+//$fieldMedia->insideForm=true;
+//$fieldMedia->multiLangType=true;
+//$fieldMedia->legendeEnabled=true;
+//$fieldMedia->add();
+//
+//$fieldMedia = new mediaVideo();
+//$fieldMedia->field="produit_video";
+//$fieldMedia->label=$datas_lang["lienVideo"];
+//$fieldMedia->multiLangType=true;
+//$fieldMedia->insideForm=true;
+//$fieldMedia->fileRequired=false;
+//$fieldMedia->legendeEnabled=false;
+//$fieldMedia->add();
 
-$fieldMedia = new mediaVideo();
-$fieldMedia->field="produit_video";
-$fieldMedia->label=$datas_lang["lienVideo"];
-$fieldMedia->multiLangType=true;
-$fieldMedia->insideForm=true;
-$fieldMedia->fileRequired=false;
-$fieldMedia->legendeEnabled=false;
-$fieldMedia->add();
+$newfield = new input();
+$newfield->field="contrat";
+$newfield->multiLang=false;
+$newfield->label="Contrat";
+$newfield->add();
+
+$newfield = new input();
+$newfield->field="contact";
+$newfield->multiLang=false;
+$newfield->label="Contact";
+$newfield->add();
+
+$newfield = new input();
+$newfield->field="email";
+$newfield->multiLang=false;
+$newfield->label="Email";
+$newfield->add();
+
+$newfield = new input();
+$newfield->field="telephone";
+$newfield->multiLang=false;
+$newfield->label="Téléphone";
+$newfield->add();
+
+$newfield = new input();
+$newfield->field="prestataire";
+$newfield->multiLang=false;
+$newfield->label="Prestataire";
+$newfield->add();
 ?>
 <?php
 include(DOS_INCPAGES_ADMIN  . "maj-prepare.php");

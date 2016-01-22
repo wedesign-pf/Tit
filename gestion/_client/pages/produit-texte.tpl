@@ -41,7 +41,7 @@ $(document).ready(function () {
 					url: '{$smarty.const.DOS_CLIENT_ADMIN}pages/ajax_load_texte_produit.php',
 					data:param,
 						success: function(data) {
-                          console.log(data);
+                          //console.log(data);
 							eval(data);
 							$("#loaderForm").hide();
 						}

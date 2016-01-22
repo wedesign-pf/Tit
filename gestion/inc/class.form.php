@@ -440,14 +440,21 @@ class formMaj{
                     }
                 }
                 
-                
+               // echoa($copy__POST2);
                 $emptyControl=array();
 				foreach($copy__POST2 as $field2=>$val2) { // on cherche les champs médias correspondant
 					
 					if(strpos($field2, $prefixe)===0) { 
+                        // echoa($field2." : ".$val2);
 						$fieldOk=substr($field2,$len_prefixe,100);
-						$__POST[$fieldOk]=$val2; // on ajoute des éléments avec un nom de champs que set_datas pourra exploiter
-                       // echoa($fieldOk);
+                        
+                        // on ajoute des éléments avec un nom de champs que set_datas pourra exploiter
+						$__POST[$fieldOk]=$val2;  
+                        foreach($myAdmin->LIST_LANG_DATAS as $clg=>$nlg){
+                            $__POST[$fieldOk . "_" . $clg]=$val2;
+                        }
+                        //echoa("." . $fieldOk . " : " . $val2);
+                        
                         if($liste["type"]=="link" && strpos($fieldOk,"lien_destination")===0 ) {
                             $emptyControl[]=$fieldOk;
                         }
@@ -458,14 +465,19 @@ class formMaj{
 					
 				} //$__POST 2
 				//echoa($emptyControl);
-                
+               
+             // echoa($__POST);
 	
                $empty=0;
                foreach($emptyControl as $fieldOk) {
+                  //  echoa("-" . $liste["field_media"]."__" . $fieldOk);
                     if($copy__POST2[$liste["field_media"]."__" . $fieldOk]=="") {
                         $empty++;   
                     }
                }            
+               
+              // echoa($empty);
+              
                if($empty==count($emptyControl)) { 
                
                     if($idMedia!="") { // on supprime le media 

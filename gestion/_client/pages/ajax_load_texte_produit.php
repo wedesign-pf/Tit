@@ -10,6 +10,13 @@ foreach($myAdmin->LIST_LANG_DATAS as $clg=>$nlg){
     $mySelect->where="id=" . $_GET["id"] . " AND lg='" . $clg . "'";
     $result=$mySelect->query();
     $row = current($result);
+    
+    $row["texte"] = str_replace("\n", "", $row["texte"]);
+    $row["texte"] = str_replace("\r\n", "", $row["texte"]);
+    $row["texte"] = str_replace("\r", "", $row["texte"]); 
+    $row["texte"] = str_replace(CHR(10),"",$row["texte"]);
+    $row["texte"] = str_replace(CHR(13),"",$row["texte"]);
+
     if($row["id"]>0) {
         echo("$('#idCurrent').val('" . $row["id"] . "');\n");
         echo("$('#titre_" . $clg . "').val(\"" . addslashes($row["titre"]) . "\");\n");
