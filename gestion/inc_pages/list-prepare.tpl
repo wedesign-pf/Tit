@@ -22,7 +22,7 @@
 <div id="tableList" class="clear w100">
 <div class="w100 mtbs">
 	{if $maxElements>0}<div id="maxElements" class="left mrs">{$maxElements} {$datas_lang.maxElements}</div>{/if}
-	{if in_array("ajouter", $actionsPage) && $typePage ne "medias"  && $typePage ne "produit" }<div id="btnAjouter" class="left btnAction" >{$datas_lang.ajouter}</div>{/if}
+	{if in_array("ajouter", $actionsPage) && $typePage ne "medias"  && $typePage ne "produit" && $typePage ne "itineraire" }<div id="btnAjouter" class="left btnAction" >{$datas_lang.ajouter}</div>{/if}
 	{foreach $boutons as $bouton}
 	{if in_array($bouton.assAction, $actionsPage)}<div class="left btnAction btnExtra" action="{$bouton.action}" target="{$bouton.target}" >{$bouton.label}</div>{/if}
 	{/foreach}
@@ -155,7 +155,7 @@ $(document).ready(function () {
 	$( "td[field='" + orderbyArray[0] + "']" ).addClass("order_" + orderbyArray[1])
 	
 	// on appel la page de mise à jour
-	{if $typePage ne "medias" &&  $typePage ne "produit" }
+	{if $typePage ne "medias" &&  $typePage ne "produit"  && $typePage ne "itineraire"  }
 		$('.goMaj td').click(function (event) { 
 			if (!$(this).hasClass('notGoMaj')) {
 				$("#actionOutList").val("maj");

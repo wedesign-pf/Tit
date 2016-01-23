@@ -148,7 +148,7 @@ foreach($result as $row){
 $newfield = new selectM();
 $newfield->field="ile";
 $newfield->multiLang=false;
-$newfield->label="Ile";
+$newfield->label="Ile(s)";
 $newfield->items=$tab_iles;
 $newfield->noneItem=true;
 $newfield->defaultValue=$filtres["F__ile"]; 
@@ -215,26 +215,26 @@ $fieldMedia->uploadDirect=true;
 $fieldMedia->insideForm=true;
 $fieldMedia->add();
 
-//$fieldMedia = new mediaFile();
-//$fieldMedia->field="produit_fichier";
-//$fieldMedia->label=$datas_lang["fichier"];
-//$fieldMedia->fileRequired=false;
-//$fieldMedia->insideForm=true;
-//$fieldMedia->startFolder="produits/files"; 
-//$fieldMedia->multiLangType=true; 
-//$fieldMedia->extensionsAuthorized=""; 
-//$fieldMedia->legendeEnabled=true;
-//$fieldMedia->upload=true;
-//$fieldMedia->add();
-//
-//$fieldMedia = new mediaLink();
-//$fieldMedia->field="produit_lien";
-//$fieldMedia->label=$datas_lang["lien"];
-//$fieldMedia->fileRequired=false;
-//$fieldMedia->insideForm=true;
-//$fieldMedia->multiLangType=true;
-//$fieldMedia->legendeEnabled=true;
-//$fieldMedia->add();
+$fieldMedia = new mediaFile();
+$fieldMedia->field="produit_fichier";
+$fieldMedia->label=$datas_lang["fichier"];
+$fieldMedia->fileRequired=false;
+$fieldMedia->insideForm=true;
+$fieldMedia->startFolder="produits/files"; 
+$fieldMedia->multiLangType=true; 
+$fieldMedia->extensionsAuthorized=""; 
+$fieldMedia->legendeEnabled=true;
+$fieldMedia->upload=true;
+$fieldMedia->add();
+
+$fieldMedia = new mediaLink();
+$fieldMedia->field="produit_lien";
+$fieldMedia->label=$datas_lang["lien"];
+$fieldMedia->fileRequired=false;
+$fieldMedia->insideForm=true;
+$fieldMedia->multiLangType=true;
+$fieldMedia->legendeEnabled=true;
+$fieldMedia->add();
 //
 //$fieldMedia = new mediaVideo();
 //$fieldMedia->field="produit_video";

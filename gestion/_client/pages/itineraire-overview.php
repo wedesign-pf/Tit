@@ -1,17 +1,16 @@
 <?php
-$myTable=$thisSite->PREFIXE_TBL_CLI . "produits_texte";
+$myTable=$thisSite->PREFIXE_TBL_CLI . "itineraires_overview";
 $orderby="chrono ASC";
 
 $listCols=array();
 $listCols[]=array("field"=>"id","label"=>"#","align"=>"center","width"=>"5%");
 $listCols[]=array("field"=>"actif","label"=>"Actif","align"=>"center","width"=>"5%","update"=>0);
-$listCols[]=array("field"=>"onglet","label"=>"Onglet","align"=>"center","width"=>"5%","update"=>0);
-$listCols[]=array("field"=>"sidebar","label"=>"Sidebar","align"=>"center","width"=>"5%","update"=>0);
+$listCols[]=array("field"=>"ile","label"=>"Ile(s)","align"=>"left","width"=>"20%");
 $listCols[]=array("field"=>"titre","label"=>"Titre","align"=>"left","width"=>"");
 ?>
 <?php
 include(DOS_INC_ADMIN . "controle_login.php");
-$typePage="produit";
+$typePage="itineraire";
 
 if(@$come_by_index!=1) { echo("passer par devant. merci.");	exit; } // sécurité si appel du script PHP sans passer par l'index
 
@@ -91,43 +90,112 @@ $newfield = new input();
 $newfield->field="titre";
 $newfield->multiLang=true;
 $newfield->label="Titre";
-$newfield->placeholder="Si vide, on prend le titre du type de texte";
+$newfield->placeholder="Si vide, le titre sera 'JOUR 99'";
 $newfield->add();
 
-// on charge tout les types de texte
-$obj_article = new article("type_texte_produit");
-$obj_article->fields="id,titre";
-$result=$obj_article->query();
-$tab_type_texte_produit=array();
-foreach($result as $row){
-   $tab_type_texte_produit[$row["id"]]=$row["titre"];
-}
-// on charge les types de texte utilisés
+// on charge toutes les iles
 $mySelect = new mySelect(__FILE__);
-$mySelect->tables=$myTable;
-$mySelect->fields="type_texte";
-$mySelect->where="actif=1 AND lg='fr' and id_parent=".$idParent;
+$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "iles";
+$mySelect->fields="id,titre";
+$mySelect->where="actif=1 AND lg=:lg";
+$mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
 $result=$mySelect->query();
-$tab_type_texte=array();
+$tab_iles_full=array();
 foreach($result as $row){
-   $tab_type_texte[]=$row["type_texte"];
+   $tab_iles_full[$row["id"]]=$row["titre"];
+}
+// on charge les iles définies pour l'itinéraire
+$mySelect = new mySelect(__FILE__);
+$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "itineraires";
+$mySelect->fields="ile";
+$mySelect->where="actif=1 AND lg='fr' and id=".$idParent;
+$result=$mySelect->query();
+$tab_iles=array();
+foreach($result as $row){
+    $l_iles=explode(",",$row["ile"]);
+    foreach($l_iles as $id_ile){
+        if($id_ile!="") {
+            $tab_iles[$id_ile]=$tab_iles_full[$id_ile];
+        }
+    }
 }
 
-$newfield = new select();
-$newfield->field="type_texte";
+$newfield = new selectM();
+$newfield->field="ile";
 $newfield->multiLang=false;
-$newfield->label="Type texte";
-$newfield->noneItem=true;
-$newfield->items=$tab_type_texte_produit;
-$newfield->valuesDisabled=$tab_type_texte;
+$newfield->label="Ile(s)";
+$newfield->items=$tab_iles;
+$newfield->selectAll=false;
 $newfield->add();
+
+// Hébergements
+$mySelect = new mySelect(__FILE__);
+$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
+$mySelect->fields="id,titre";
+$mySelect->where="actif=1 AND lg=:lg AND type=23";
+$mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
+$result=$mySelect->query();
+$tab_hebergements=array();
+foreach($result as $row){
+   $tab_hebergements[$row["id"]]=$row["titre"];
+}
+$newfield = new selectM();
+$newfield->field="hebergement";
+$newfield->multiLang=false;
+$newfield->label="Hébergement";
+$newfield->items=$tab_hebergements;
+$newfield->selectAll=false;
+$newfield->filter=true;
+$newfield->add();
+
+// Excursions
+$mySelect = new mySelect(__FILE__);
+$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
+$mySelect->fields="id,titre";
+$mySelect->where="actif=1 AND lg=:lg AND type=24";
+$mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
+$result=$mySelect->query();
+$tab_excursions=array();
+foreach($result as $row){
+   $tab_excursions[$row["id"]]=$row["titre"];
+}
+$newfield = new selectM();
+$newfield->field="excursion";
+$newfield->multiLang=false;
+$newfield->label="Excursion(s)";
+$newfield->items=$tab_excursions;
+$newfield->selectAll=false;
+$newfield->filter=true;
+$newfield->add();
+
+
+// Services
+$mySelect = new mySelect(__FILE__);
+$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
+$mySelect->fields="id,titre";
+$mySelect->where="actif=1 AND lg=:lg AND type=25";
+$mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
+$result=$mySelect->query();
+$tab_services=array();
+foreach($result as $row){
+   $tab_services[$row["id"]]=$row["titre"];
+}
+$newfield = new selectM();
+$newfield->field="service";
+$newfield->multiLang=false;
+$newfield->label="Service(s)";
+$newfield->items=$tab_services;
+$newfield->selectAll=false;
+$newfield->filter=true;
+$newfield->add();
+
 
 $newfield = new editor();
 $newfield->field="texte";
 $newfield->label="Texte";
 $newfield->height=400;
 $newfield->multiLang=true;
-$newfield->startFolder="produits";
+$newfield->startFolder="itineraires";
 $newfield->variablesAuthorized=true;
 $newfield->add();
 ?>
@@ -173,6 +241,7 @@ if($count_datas >= $fieldMedia->maxElements && $fieldMedia->maxElements>0) {
 	RemoveActionPage("ajouter");
 }
 
+$day=0;
 if(count($formList->datasList)>0) {
 
 	include(DOS_INCPAGES_ADMIN  . "list-beforeLoop.php");
@@ -183,12 +252,11 @@ if(count($formList->datasList)>0) {
 		$valeurs=array();
 
 		include(DOS_INCPAGES_ADMIN  . "list-inLoop.php");
-
+        
+        $day++;
         if($valeurs["titre"]=="") { 
-            $valeurs["titre"]=$tab_type_texte_produit[$datas["type_texte"]];
-        } else {
-            $valeurs["titre"].= " [" . $tab_type_texte_produit[$datas["type_texte"]] . "]";
-        }
+            $valeurs["titre"]="[" . "Jour ".$day . "]";
+        } 
         
 		$listRow[$keyId]=$valeurs;
 	

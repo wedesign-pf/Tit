@@ -11,8 +11,8 @@ if($__POST["F__type"]!="" && $__POST["F__type"]!="allItems" && ($__POST["F__cat"
 $listCols[]=array("field"=>"titre","label"=>"Titre","align"=>"left","width"=>"");
 $listCols[]=array("field"=>"texte","label"=>"Textes","align"=>"center","width"=>"5%", "action"=>"texte"); 
 $listCols[]=array("field"=>"produit_image","label"=>"<i class='icon-append fa fa-15x fa-picture-o'>","align"=>"center","width"=>"5%", "action"=>"image"); 
-$listCols[]=array("field"=>"produit_fichier","label"=>"<i class='icon-append fa fa-15x fa-file-o'>","align"=>"center","width"=>"5%", "action"=>"file");
-$listCols[]=array("field"=>"produit_lien","label"=>"<i class='icon-append fa fa-15x fa-link'>","align"=>"center","width"=>"5%", "action"=>"link");
+//$listCols[]=array("field"=>"produit_fichier","label"=>"<i class='icon-append fa fa-15x fa-file-o'>","align"=>"center","width"=>"5%", "action"=>"file");
+//$listCols[]=array("field"=>"produit_lien","label"=>"<i class='icon-append fa fa-15x fa-link'>","align"=>"center","width"=>"5%", "action"=>"link");
 $listCols[]=array("field"=>"produit_video","label"=>"<i class='icon-append fa fa-15x fa-video-camera'>","align"=>"center","width"=>"5%", "action"=>"video");
 ?>
 <?php

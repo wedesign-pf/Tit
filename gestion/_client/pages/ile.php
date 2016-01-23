@@ -30,7 +30,7 @@ if($__POST["actionInList"]=="delete") { // suppression
 				$result=$myDelete->execute();
 				$deleteDone=true;
                 
-                deleteMediasbyIdParent("produit",$idDel);
+                deleteMediasbyIdParent("ile",$idDel);
 			}
 		}
 	}

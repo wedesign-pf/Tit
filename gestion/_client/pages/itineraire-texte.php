@@ -1,5 +1,5 @@
 <?php
-$myTable=$thisSite->PREFIXE_TBL_CLI . "produits_texte";
+$myTable=$thisSite->PREFIXE_TBL_CLI . "itineraires_texte";
 $orderby="chrono ASC";
 
 $listCols=array();
@@ -11,7 +11,7 @@ $listCols[]=array("field"=>"titre","label"=>"Titre","align"=>"left","width"=>"")
 ?>
 <?php
 include(DOS_INC_ADMIN . "controle_login.php");
-$typePage="produit";
+$typePage="itineraire";
 
 if(@$come_by_index!=1) { echo("passer par devant. merci.");	exit; } // sécurité si appel du script PHP sans passer par l'index
 
@@ -90,17 +90,16 @@ $newfield->add();
 $newfield = new input();
 $newfield->field="titre";
 $newfield->multiLang=true;
-$newfield->label="Titre";
-$newfield->placeholder="Si vide, on prend le titre du type de texte";
+$newfield->label="Titre (si différent du type)";
 $newfield->add();
 
 // on charge tout les types de texte
-$obj_article = new article("type_texte_produit");
+$obj_article = new article("type_texte_itineraire");
 $obj_article->fields="id,titre";
 $result=$obj_article->query();
-$tab_type_texte_produit=array();
+$tab_type_texte_itineraire=array();
 foreach($result as $row){
-   $tab_type_texte_produit[$row["id"]]=$row["titre"];
+   $tab_type_texte_itineraire[$row["id"]]=$row["titre"];
 }
 // on charge les types de texte utilisés
 $mySelect = new mySelect(__FILE__);
@@ -118,7 +117,7 @@ $newfield->field="type_texte";
 $newfield->multiLang=false;
 $newfield->label="Type texte";
 $newfield->noneItem=true;
-$newfield->items=$tab_type_texte_produit;
+$newfield->items=$tab_type_texte_itineraire;
 $newfield->valuesDisabled=$tab_type_texte;
 $newfield->add();
 
@@ -127,7 +126,7 @@ $newfield->field="texte";
 $newfield->label="Texte";
 $newfield->height=400;
 $newfield->multiLang=true;
-$newfield->startFolder="produits";
+$newfield->startFolder="itineraires";
 $newfield->variablesAuthorized=true;
 $newfield->add();
 ?>
@@ -185,9 +184,9 @@ if(count($formList->datasList)>0) {
 		include(DOS_INCPAGES_ADMIN  . "list-inLoop.php");
 
         if($valeurs["titre"]=="") { 
-            $valeurs["titre"]=$tab_type_texte_produit[$datas["type_texte"]];
+            $valeurs["titre"]=$tab_type_texte_itineraire[$datas["type_texte"]];
         } else {
-            $valeurs["titre"].= " [" . $tab_type_texte_produit[$datas["type_texte"]] . "]";
+            $valeurs["titre"].= " [" . $tab_type_texte_itineraire[$datas["type_texte"]] . "]";
         }
         
 		$listRow[$keyId]=$valeurs;
