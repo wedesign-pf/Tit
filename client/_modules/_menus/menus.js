@@ -3,23 +3,26 @@ $(document).ready(function () {
 	var dropdownHam=0;
 	$('input#dropdownHam').click(function (e) { 
 		if(dropdownHam==0) { 
-            $('#menuP').show();
-            $('#btnHam').html('<i class="fa fa-2x fa-times"></i>');
+        $("#main").addClass('overlay-open');
+           // $('#menuFull').slideDown(500, function() { $('#navigation').fadeIn(500); $("#btnHam").addClass('opened'); });
+           
+            $("#menuFull").animate({width: 'toggle'},500,"swing",function() { $("#btnHam").addClass('opened'); $('#navigation').fadeIn(500);  });
 			dropdownHam=1;
 		} else {
-			$('#menuP').hide();
-            $('#btnHam').html('<i class="fa fa-2x fa-bars"></i>');
+            
+         //   $('#navigation').fadeOut(500, function() { $('#menuFull').slideUp(500); $("#btnHam").removeClass('opened'); });
+            $('#navigation').fadeOut(500, function() {$("#btnHam").removeClass('opened'); $("#main").removeClass('overlay-open'); $("#menuFull").animate({width: 'toggle'},500,"swing");  });
 			dropdownHam=0;
 		}
 		
 	});
 
 	$( "#menuP" ).find( "a" ).click(function (e) { 
-		if(dropdownHam==1) { 
-        if($(this).attr('data-type')!="nolink") { $('#menuP').hide(); }
-        }
-        $('#btnHam').html('<i class="fa fa-2x fa-bars"></i>');
-		dropdownHam=0;
+		//if(dropdownHam==1) { 
+        //    if($(this).attr('data-type')!="nolink") { $('#menuFull').slideUp(); }
+      //  }
+        //$("#btnHam").removeClass('opened');
+		//dropdownHam=0;
 	});
     
 
@@ -30,15 +33,10 @@ $(document).ready(function () {
 
 
 // Utilisé lors du click dans le menu principal
-	
 var offsetHeader=100;
 	
 function scrollToAnchor($this){
 
-	//$( "#menuP" ).find( "a" ).removeClass( "a_rub_actif" );
-	//$( "#menuP" ).find( "a" ).addClass( "a_rub" );
-	//$this.addClass( "a_rub_actif" );
-	
 	var aid= $this.attr('href');
 	var parts = aid.split("#");
     var trgt = parts[1];
@@ -54,10 +52,10 @@ function changeAnchor($this){
 
 	var rub= $this.attr('rub');
 
-	//$( "#menu_principal" ).find( "a" ).removeClass( "a_rub_actif" );
-	//$( "#menu_principal" ).find( "a" ).addClass( "a_rub" );
+	$( "#menu_principal" ).find( "a" ).removeClass( "a_rub_actif" );
+	$( "#menu_principal" ).find( "a" ).addClass( "a_rub" );
 
-	//$("#a_rub"+rub).addClass( "a_rub_actif" );
+	$("#a_rub"+rub).addClass( "a_rub_actif" );
 
 }
 
@@ -76,13 +74,11 @@ function scrollToAnchor2(){
 
 }
 
+
 /*
 	By Osvaldas Valutis, www.osvaldas.info
 	Available for use under the MIT License
 */
-
-
-
 ;(function( $, window, document, undefined )
 {   
 	$.fn.doubleTapToGo = function( params )

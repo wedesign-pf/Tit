@@ -68,7 +68,10 @@
 {* ------------ Contenu de la page en cours --------------------- *}
 {if $thisSite->current_scriptTPL ne ""} {include file="{$thisSite->current_scriptTPL}"} {/if}
 {* ------------  FIN contenu de la page en cours --------------------- *}
-<script type="text/javascript" src="{$thisSite->DOS_CLIENT}js/lightbox.js"></script>
-{if $thisSite->current_scriptJS ne ""} <script type="text/javascript" src="{$thisSite->current_scriptJS}"></script>{/if}
 </body>
 </html>
+{if $PAGE_jsFooter_client[0] ne ""}
+{foreach $PAGE_jsFooter_client as $elt}
+<script type="text/javascript" src="{$elt}"></script>
+{/foreach}
+{/if}

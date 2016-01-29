@@ -22,7 +22,7 @@ class selectM extends field{
 	
 	/////////////////////////////////// 
 	public function add($param="") { 
-		
+	
 		if(!is_array($this->items) && $this->tags!=true) return 0;
 		
 		global $myAdmin;

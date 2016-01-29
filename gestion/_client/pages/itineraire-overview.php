@@ -110,13 +110,55 @@ $mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "itineraires";
 $mySelect->fields="ile";
 $mySelect->where="actif=1 AND lg='fr' and id=".$idParent;
 $result=$mySelect->query();
+$row=current($result);
+
 $tab_iles=array();
-foreach($result as $row){
-    $l_iles=explode(",",$row["ile"]);
-    foreach($l_iles as $id_ile){
-        if($id_ile!="") {
-            $tab_iles[$id_ile]=$tab_iles_full[$id_ile];
+$tab_hebergements=array();
+$tab_excursions=array();
+$tab_services=array();
+
+$l_iles=explode(",",$row["ile"]);
+
+foreach($l_iles as $id_ile){
+    if($id_ile!="") {
+        $tab_iles[$id_ile]=$tab_iles_full[$id_ile];
+        
+        if(count($l_iles)>1) { $prefixe=$tab_iles_full[$id_ile] . ": " ; }
+        
+        // Chargement Hébergements uniquement pour les iles de l'itinéraire
+        $mySelect = new mySelect(__FILE__);
+        $mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
+        $mySelect->fields="id,titre";
+        $mySelect->where="actif=1 AND lg=:lg AND type=23 AND ile REGEXP '^([0-9]+,)*" . $id_ile . "(,[0-9]+)*$'";
+        $mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
+        $result=$mySelect->query();
+        foreach($result as $row){
+           $tab_hebergements[$row["id"]]= $prefixe . $row["titre"];
         }
+        
+         // Chargement Exursions uniquement pour les iles de l'itinéraire
+        $mySelect = new mySelect(__FILE__);
+        $mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
+        $mySelect->fields="id,titre";
+        $mySelect->where="actif=1 AND lg=:lg AND type=24 AND ile REGEXP '^([0-9]+,)*" . $id_ile . "(,[0-9]+)*$'";
+        $mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
+        $result=$mySelect->query();
+        foreach($result as $row){
+           $tab_excursions[$row["id"]]= $prefixe . $row["titre"];
+        }
+
+        // Chargement Services uniquement pour les iles de l'itinéraire
+        $mySelect = new mySelect(__FILE__);
+        $mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
+        $mySelect->fields="id,titre";
+        $mySelect->where="actif=1 AND lg=:lg AND type=25 AND ile REGEXP '^([0-9]+,)*" . $id_ile . "(,[0-9]+)*$'";
+        $mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
+        $result=$mySelect->query();
+        foreach($result as $row){
+           $tab_services[$row["id"]]= $prefixe . $row["titre"];
+        }
+                
+        
     }
 }
 
@@ -128,17 +170,6 @@ $newfield->items=$tab_iles;
 $newfield->selectAll=false;
 $newfield->add();
 
-// Hébergements
-$mySelect = new mySelect(__FILE__);
-$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
-$mySelect->fields="id,titre";
-$mySelect->where="actif=1 AND lg=:lg AND type=23";
-$mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
-$result=$mySelect->query();
-$tab_hebergements=array();
-foreach($result as $row){
-   $tab_hebergements[$row["id"]]=$row["titre"];
-}
 $newfield = new selectM();
 $newfield->field="hebergement";
 $newfield->multiLang=false;
@@ -148,17 +179,6 @@ $newfield->selectAll=false;
 $newfield->filter=true;
 $newfield->add();
 
-// Excursions
-$mySelect = new mySelect(__FILE__);
-$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
-$mySelect->fields="id,titre";
-$mySelect->where="actif=1 AND lg=:lg AND type=24";
-$mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
-$result=$mySelect->query();
-$tab_excursions=array();
-foreach($result as $row){
-   $tab_excursions[$row["id"]]=$row["titre"];
-}
 $newfield = new selectM();
 $newfield->field="excursion";
 $newfield->multiLang=false;
@@ -168,18 +188,6 @@ $newfield->selectAll=false;
 $newfield->filter=true;
 $newfield->add();
 
-
-// Services
-$mySelect = new mySelect(__FILE__);
-$mySelect->tables=$thisSite->PREFIXE_TBL_CLI . "produits";
-$mySelect->fields="id,titre";
-$mySelect->where="actif=1 AND lg=:lg AND type=25";
-$mySelect->whereValue["lg"]=array($myAdmin->LANG_ADMIN,PDO::PARAM_STR);
-$result=$mySelect->query();
-$tab_services=array();
-foreach($result as $row){
-   $tab_services[$row["id"]]=$row["titre"];
-}
 $newfield = new selectM();
 $newfield->field="service";
 $newfield->multiLang=false;
@@ -257,6 +265,16 @@ if(count($formList->datasList)>0) {
         if($valeurs["titre"]=="") { 
             $valeurs["titre"]="[" . "Jour ".$day . "]";
         } 
+        $l_iles=explode(",",$datas["ile"]);
+        $sep="";
+        $valeurs["ile"]="";
+        foreach($l_iles as $id_ile){
+            if($id_ile!="") {
+                $valeurs["ile"].=$sep . $tab_iles[$id_ile]; //."($id_ile)";
+                $sep=", ";
+            }
+        }
+
         
 		$listRow[$keyId]=$valeurs;
 	

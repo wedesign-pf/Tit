@@ -8,9 +8,9 @@
 {$field_id_parent}
 <section><div class="row">{$field_titre}</div></section>
 <section><div class="row">{$field_ile}</div></section>
-<section><div class="row">{$field_hebergement}</div></section>
-<section><div class="row">{$field_excursion}</div></section>
-<section><div class="row">{$field_service}</div></section>
+<section><div class="row" id="Mheb">{$field_hebergement}</div></section>
+<section><div class="row" id="Mexc">{$field_excursion}</div></section>
+<section><div class="row" id="Mser">{$field_service}</div></section>
 <section><div class="row">{$field_texte}</div></section>
 </form>	
 <script type="text/javascript" >
@@ -19,7 +19,19 @@ jQuery.validator.setDefaults({
 });
 
 $(document).ready(function () {
-	
+
+    $("input[name=selectItemscr_ile]").change(function (event) { 
+		$.ajax({
+			type: "GET",
+			cache:false,
+			url: '{$smarty.const.DOS_CLIENT_ADMIN}pages/ajax_change_ile_overview.php',
+			data: 'ile='+$('#scr_ile').multipleSelect('getSelects'),
+            success: function(data) {
+                //console.log(data);
+				eval(data);
+            }
+		}); 
+	});
 	
 		$('#btnAppliquer').click(function (event) { 
 			event.preventDefault();

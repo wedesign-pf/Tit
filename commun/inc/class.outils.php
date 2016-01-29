@@ -10,6 +10,7 @@ class outil {
 	public $params; //  parammètres supplémentaires
 	public $css; //  tableau des feuilles de style à ajouter dans la page
 	public $js; //  tableau des scripts JS à ajouter dans la page
+    public $jsFooter; //  tableau des scripts JS à ajouter en FIN de la page
 	public $head; //  code à insérer dans la balise HEAD de la page
 	public $doc_ready; //  code à insérer dans la fct Jquery $(document).ready de la page
 	public $win_load; //  code à insérer dans la fct Jquery $(document).win_load de la page
@@ -105,7 +106,7 @@ class outil {
 			}
 			
 			
-			// JS
+			// JS HEADER
 			
             // par défaut, on charge le JS portant le meme nom que le module 
             if(file_exists($chemin_outil . $this->outil . ".js")) { 
@@ -122,6 +123,21 @@ class outil {
 						addStructure("PAGE_js_client",$js);	
 					} else if(file_exists($chemin_outil . $js) && $js!="") {
 						addStructure("PAGE_js_client",$chemin_outil . $js);	
+					}
+				}
+			}
+            
+            
+            // JS FOOTER
+			if(!is_array($this->jsFooter) && $this->jsFooter!="") {
+				$this->jsFooter=array($this->jsFooter);
+			}
+			if(is_array($this->jsFooter)) {
+				foreach ($this->jsFooter as $k => $js) {
+					if (strpos($js, 'http') === 0) {
+						addStructure("PAGE_jsFooter_client",$js);	
+					} else if(file_exists($chemin_outil . $js) && $js!="") {
+						addStructure("PAGE_jsFooter_client",$chemin_outil . $js);	
 					}
 				}
 			}

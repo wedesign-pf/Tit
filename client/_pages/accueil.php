@@ -16,4 +16,5 @@ $result=$mySelect->query();
 $row=current($result);
 
 $smarty->assign("texte2", $row["texte"]);
+
 ?>

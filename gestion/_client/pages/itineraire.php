@@ -121,9 +121,9 @@ $formList->tables=$myTable;
 $formList->fields="*";
 $formList->orderby=$orderby;
 $formList->where="lg='" . $myAdmin->LANG_DATAS . "'";
-if($F__ile!="" && $F__ile!="allItems") { $formList->where.=" AND ( ile = '" . $F__ile . "' OR ile LIKE '%" . $F__ile . ",%'" . " OR ile LIKE '%," . $F__ile . "%'" . ")"; }
-if($F__profil!="" && $F__profil!="allItems") { $formList->where.=" AND ( profil = '" . $F__profil . "' OR profil LIKE '%" . $F__profil . ",%'" . " OR profil LIKE '%," . $F__profil . "%'" . ")"; }
-if($F__theme!="" && $F__theme!="allItems") { $formList->where.=" AND ( theme = '" . $F__theme . "' OR theme LIKE '%" . $F__theme . ",%'" . " OR theme LIKE '%," . $F__theme . "%'" . ")"; }
+if($F__ile!="" && $F__ile!="allItems") { $formList->where.=" AND ile REGEXP '^([0-9]+,)*" . $F__ile . "(,[0-9]+)*$'"; }
+if($F__profil!="" && $F__profil!="allItems") { $formList->where.=" AND profil REGEXP '^([0-9]+,)*" . $F__profil . "(,[0-9]+)*$'"; }
+if($F__theme!="" && $F__theme!="allItems") { $formList->where.=" AND ile theme '^([0-9]+,)*" . $F__theme . "(,[0-9]+)*$'"; }
 $formList->clause_where();
 $count_datas = $formList->get_datas();
 
@@ -142,7 +142,7 @@ if(count($formList->datasList)>0) {
         $valeurs["ile"]="";
         foreach($l_iles as $id_ile){
             if($id_ile!="") {
-                $valeurs["ile"].=$sep . $tab_iles[$id_ile];
+                $valeurs["ile"].=$sep . $tab_iles[$id_ile]; //."($id_ile)";
                 $sep=", ";
             }
         }

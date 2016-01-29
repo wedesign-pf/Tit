@@ -95,7 +95,12 @@ if (/*@cc_on!@*/false) {
 {$PAGE_old_IE}{* Alerte si version IE trop ancienne *}
 </head>
 <body>
-{if $thisSite->LOADER_PAGE eq 1 }<div id="loaderPage"></div>{/if}
+{if $thisSite->LOADER_PAGE eq 1 }<div id="loaderPage"><div class="sk-folding-cube">
+  <div class="sk-cube1 sk-cube"></div>
+  <div class="sk-cube2 sk-cube"></div>
+  <div class="sk-cube4 sk-cube"></div>
+  <div class="sk-cube3 sk-cube"></div>
+</div></div>{/if}
 {if $boutons_partage eq 1 }
 {*<div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -150,7 +155,10 @@ $(window).on("load", function() {
    {if $elt ne ""} {$elt} {/if}
 {/foreach}
 {/if}
-<script type="text/javascript" src="{$thisSite->DOS_CLIENT}js/page.js"></script>
-{if $thisSite->current_scriptJS ne ""} <script type="text/javascript" src="{$thisSite->current_scriptJS}"></script>{/if}
 </body>
 </html>
+{if $PAGE_jsFooter_client[0] ne ""}
+{foreach $PAGE_jsFooter_client as $elt}
+<script type="text/javascript" src="{$elt}"></script>
+{/foreach}
+{/if}

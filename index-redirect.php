@@ -12,7 +12,6 @@ $thisSite->current_ssrub="";
 $thisSite->current_typePage="";
 $thisSite->current_scriptPHP="";
 $thisSite->current_scriptTPL="";
-$thisSite->current_scriptJS="";
 $thisSite->current_data=array();
 $thisSite->page=array();
 $thisSite->erreur404="";
@@ -142,7 +141,8 @@ if($isCached==0) {
     include_once($thisSite->DOS_BASE_INIT . "init_commun.php"); // initialisation commune à tout les types de page
     @include_once($thisSite->DOS_BASE_INIT . $thisSite->current_typePage . ".php"); // initialisation suivant le type de page
 
-    $obj_module = new module("_loaders",$thisSite->current_typePage);
+    $obj_module = new module("_prepare",$thisSite->current_typePage);
+    $obj_module->js=$thisSite->current_typePage . ".js";
     $obj_module->load();
 
     if($fichier_php!="") { 
@@ -173,13 +173,6 @@ $PAGE_type_action=$smarty->getTemplateVars("PAGE_footer");
 if(is_array($PAGE_type_action)) { $smarty->assign("PAGE_footer",array_unique($PAGE_type_action)); }
 
 if(!file_exists($thisSite->current_scriptTPL)) { $thisSite->current_scriptTPL="";	}
-
-// Script JS associé à la page
-$fichier_js=remove_extension($thisSite->current_scriptPHP) . ".js"; 
-
-if(file_exists($thisSite->DOS_CLIENT . "js/" . $fichier_js)) {
-    $thisSite->current_scriptJS=$thisSite->DOS_CLIENT . "js/" . $fichier_js;
-}
 
 $structure_page=$thisSite->DOS_BASE_TEMPLATES . $thisSite->current_typePage . ".tpl";
 

@@ -1,12 +1,14 @@
-    <div class="clear">&nbsp;</div>
+<div class="clear">&nbsp;</div>
     {$MODULE_slideshow_marques}
-    <div class="pubBas AnnulepageContentMargin line ptvs pbs">
+    <div class="pubBas line ptvs pbs">
         {*<div class="fl w50 txtcenter tiny-w100 cadrepub pts">{$PUBLICITE_11}</div>*}
         {*<div class="fl w50 txtcenter tiny-w100 cadrepub pts ">{$PUBLICITE_12}</div>*}
         <div class="clear"></div>
     </div>
 </div></div></main>
 <footer>
+<div class='animatedParent'>
+    <a id="go2Top" href="#top" class='mrl animated fadeInUp'><i class="fa fa-arrow-circle-o-up fa-3x"></i></a>
     <div class="container line ">
 		<div id="footer1" class="w50 fl">{$MODULE_menu_footer}</div>
         <div id="footer2" class="w50 fl">

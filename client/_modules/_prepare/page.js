@@ -1,5 +1,5 @@
 $(function() {
-    
+
     
 }); // $(function()
 
@@ -46,6 +46,12 @@ $(window).on("load", function() {
 }); // window load
 
 $(document).ready( function(){
+    
+    
+    $("#go2Top").on('click', function(event){
+        event.preventDefault();
+        $('body,html').animate({scrollTop: 0 ,}, "slow" );
+    });
 
     // -------------------------
     

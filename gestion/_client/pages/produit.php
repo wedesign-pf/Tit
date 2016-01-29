@@ -6,6 +6,7 @@ $listCols=array();
 $listCols[]=array("field"=>"id","label"=>"#","align"=>"center","width"=>"5%");
 $listCols[]=array("field"=>"actif","label"=>"Actif","align"=>"center","width"=>"5%","update"=>0);
 $listCols[]=array("field"=>"code","label"=>"Code","align"=>"left","width"=>"7%");
+if($__POST["F__type"]=="" || $__POST["F__type"]=="allItems") { $listCols[]=array("field"=>"type","label"=>"Type","align"=>"left","width"=>"10%"); }
 if($__POST["F__ile"]=="" || $__POST["F__ile"]=="allItems") { $listCols[]=array("field"=>"ile","label"=>"Ile","align"=>"left","width"=>"10%"); }
 if($__POST["F__type"]!="" && $__POST["F__type"]!="allItems" && ($__POST["F__cat"]=="" || $__POST["F__cat"]=="allItems")) { $listCols[]=array("field"=>"cat","label"=>"Catégorie","align"=>"left","width"=>"12%"); }
 $listCols[]=array("field"=>"titre","label"=>"Titre","align"=>"left","width"=>"");
@@ -166,6 +167,8 @@ if(count($formList->datasList)>0) {
 		include(DOS_INCPAGES_ADMIN  . "list-inLoop.php");
 
 		// chargement d'autres données /////////////////////////////////////// ????
+        
+        $valeurs["type"]=$tab_type_produit[$datas["type"]];
         $valeurs["cat"]=$tab_cat_produit[$datas["cat"]];
         $valeurs["ile"]=$tab_iles[$datas["ile"]];
         // ajout nombre de textes dans la liste
