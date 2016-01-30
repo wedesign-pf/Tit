@@ -13,33 +13,21 @@
  |  }
  *
  */
- 
-.scroll-to-fixed-fixed {
-	z-index:1;
-}
- 
- 
-.header_scroll {
-	display:none; 
 
-	
+.scroll-to-fixed-fixed {
+    z-index: 1;
+}
+
+.header_scroll {
+    display: none;
 }
 
 .scroll-to-fixed-fixed .header_scroll {
+    display: none;
     background-color: #fff;
-	display:none;
-
-
 }
 
-.scroll-to-fixed-fixed  #navigation{
-
-}
-
-
-.scroll-to-fixed-fixed  #navigation #menu_principal{
-	width:100%;
-	border-radius: 0px;
-	-moz-border-radius: 0px;
-	-webkit-border-radius: 0px;	
+.scroll-to-fixed-fixed  #navigation #menu_principal {
+    width: 100%;
+    border-radius: 0;
 }

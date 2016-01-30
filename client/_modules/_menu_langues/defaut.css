@@ -1,32 +1,29 @@
-#langues{
-float:right;
-}
-#langues li{
-	margin: 0;
-	padding: 0;
-	text-indent: 0px;
-	list-style-type: none;
+#langues {
+    float: right;
 }
 
-#langues a{
-	display:block;
-	background-color: #212121;
-	padding:6px 14px;
-	text-decoration: none;
-	font-size: 16px;
-	letter-spacing: 0.05em;
-	color: rgba(255, 255, 255, 1);
-	-webkit-transition: all 0.2s linear;
-	-moz-transition: all 0.2s linear;
-	-o-transition: all 0.2s linear;
-	-ms-transition: all 0.2s linear;
-	transition: all 0.2s linear;
-	font-weight: bold;
-	font-style: italic;
+#langues li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-indent: 0;
 }
 
+#langues a {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    display: block;
+    padding: 6px 14px;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    text-decoration: none;
+    letter-spacing: .05em;
+    color: rgba(255, 255, 255, 1);
+    background-color: #212121;
+}
 
 #langues a:hover {
-	text-decoration: none;
-	color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    color: rgba(255, 255, 255, .5);
 }

@@ -59,17 +59,23 @@ if (/*@cc_on!@*/false) {
 <link rel="dns-prefetch" href="{$url}">
 {/foreach}
 
-<link href="{$thisSite->DOS_BASE_CSS}reset.css" rel="stylesheet" type="text/css" />
+
+{if $thisSite->CSS_OPTIMIZE eq ""}
+<link href="{$thisSite->DOS_CLIENT_SKIN}reset.css" rel="stylesheet" type="text/css" />
 <link href="{$thisSite->skin}base.css" rel="stylesheet" type="text/css" />
 <link href="{$thisSite->skin}style.css" rel="stylesheet" type="text/css" />
-{if $thisSite->printCSS==true}<link href="{$thisSite->skin}print.css" rel="stylesheet" type="text/css" media="print"/>{/if}
+<link href="{$thisSite->skin}responsive.css" rel="stylesheet" type="text/css" />
 <link href="{$thisSite->skin}font-awesome.css" rel="stylesheet" type="text/css" />
+{else}
+<link href="{$thisSite->skin}{$thisSite->CSS_OPTIMIZE}" rel="stylesheet" type="text/css" />
+{/if}
+{if $thisSite->printCSS==true}<link href="{$thisSite->skin}print.css" rel="stylesheet" type="text/css" media="print"/>{/if}
+
 {if $PAGE_css_client[0] ne ""}
 {foreach $PAGE_css_client as $elt}
 <link href="{$elt}" rel="stylesheet" type="text/css" />
 {/foreach}
 {/if}
-<link href="{$thisSite->skin}responsive.css" rel="stylesheet" type="text/css" />
 
 <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -120,6 +126,19 @@ if (/*@cc_on!@*/false) {
 {$MODULE_footer}
 {if $thisSite->cookiesAccept==1}{$MODULE_cookies_accept}{/if}
 {* ------------  FIN contenu de la page en cours --------------------- *}
+{if $PAGE_footer[0] ne ""}
+
+{foreach $PAGE_footer as $elt}
+   {if $elt ne ""} {$elt} {/if}
+{/foreach}
+{/if}
+</body>
+</html>
+{if $PAGE_jsFooter_client[0] ne ""}
+{foreach $PAGE_jsFooter_client as $elt}
+<script type="text/javascript" src="{$elt}"></script>
+{/foreach}
+{/if}
 <script type="text/javascript" >
     var loader_page={$thisSite->LOADER_PAGE};
 
@@ -149,16 +168,3 @@ $(window).on("load", function() {
 });
 {/if}
 </script>
-{if $PAGE_footer[0] ne ""}
-
-{foreach $PAGE_footer as $elt}
-   {if $elt ne ""} {$elt} {/if}
-{/foreach}
-{/if}
-</body>
-</html>
-{if $PAGE_jsFooter_client[0] ne ""}
-{foreach $PAGE_jsFooter_client as $elt}
-<script type="text/javascript" src="{$elt}"></script>
-{/foreach}
-{/if}

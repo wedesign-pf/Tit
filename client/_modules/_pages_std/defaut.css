@@ -1,10 +1,10 @@
 .texte {
-    text-align:justify;  
-    overflow:hidden;  
+    overflow: hidden;
+    text-align: justify;
 }
 
 .contenu {
-    overflow:hidden; 
+    overflow: hidden;
 }
 
 .texte b,
@@ -17,50 +17,48 @@
 }
 
 .filesAndLInks a {
-  font-size: 0.9em;  
-  color: rgba(227,6,19,1);
-  text-decoration: none;
+    font-size: .9em;
+    text-decoration: none;
+    color: rgba(227,6,19,1);
 }
 
 .filesAndLInks a:hover {
-   color: rgba(227,6,19,0.5);
     text-decoration: none;
+    color: rgba(227,6,19,.5);
 }
 
-
 .listFiles {
-    background-color:rgba(224,238,252,1);
-     border-right:2px solid #fff;
+    border-right: 2px solid #fff;
+    background-color: rgba(224,238,252,1);
 }
 
 .listLinks {
-    background-color:rgba(224,238,252,1);
-    border-right:2px solid #fff;
+    border-right: 2px solid #fff;
+    background-color: rgba(224,238,252,1);
 }
 
-.listImages .image  {
-	height:150px;
-	overflow:hidden;
+.listImages .image {
+    overflow: hidden;
+    height: 150px;
 }
 
-.listImages .image1  {
-	height:400px;
+.listImages .image1 {
+    height: 400px;
 }
 
-.listImages .image2  {
-	height:250px;
+.listImages .image2 {
+    height: 250px;
 }
 
-.listVideos .video  {
-	height:300px;
-	overflow:hidden;
+.listVideos .video {
+    overflow: hidden;
+    height: 300px;
 }
 
-.listVideos .video1  {
-	height:300px;
+.listVideos .video1 {
+    height: 300px;
 }
 
-.listVideos .video2  {
-	height:300px;
+.listVideos .video2 {
+    height: 300px;
 }
-

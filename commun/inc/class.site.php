@@ -33,7 +33,6 @@ class thisSite {
         $this->DOS_BASE_LIB = $this->DOS_BASE . "lib/"; // dossier librairies communes
         $this->DOS_BASE_FCT =  $this->DOS_BASE . "fct/"; // dossier fonctions communes
         $this->DOS_BASE_PUB = $this->DOS_BASE . "pub/"; // dossier includes pour la publicité
-        $this->DOS_BASE_CSS = $this->DOS_BASE . "css/"; // dossier des CSS de base
         $this->DOS_BASE_INIT = $this->DOS_BASE . "init_pages/"; // Initialisation par type de page
         $this->DOS_BASE_TEMPLATES = $this->DOS_BASE . "templates/"; // dossier contenant les templates générales par type de page
         $this->DOS_CLIENT_FILES = $this->DOS_CLIENT . "files/"; // dossier des fichiers du client (seul dossier dans lequel il peut uploader)

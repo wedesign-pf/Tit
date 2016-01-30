@@ -1,110 +1,188 @@
-@-webkit-keyframes herbyIn{
-    from{-webkit-transform:translate3d(0, 100%, 0);transform:translate3d(0, 100%, 0);visibility:visible}to{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}
-}
-@keyframes herbyIn{
-    from{-webkit-transform:translate3d(0, 100%, 0);transform:translate3d(0, 100%, 0);visibility:visible}to{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}
-}
+@-webkit-keyframes herbyIn {
+    from {
+        visibility: visible;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
 
-.herbyIn{-webkit-animation-name:herbyIn;animation-name:herbyIn}
-
-@-webkit-keyframes herbyOut{
-    from{opacity:1}to{opacity:0;-webkit-transform:translate3d(0, 100%, 0);transform:translate3d(0, 100%, 0)}
-}
-@keyframes herbyOut{
-    from{opacity:1}to{opacity:0;-webkit-transform:translate3d(0, 100%, 0);transform:translate3d(0, 100%, 0)}
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
 }
 
-.herbyOut{-webkit-animation-name:herbyOut;animation-name:herbyOut}
+@keyframes herbyIn {
+    from {
+        visibility: visible;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
 
-.herbyCookieConsent{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    overflow:hidden;
-    width:100%;
-    background:#f6f6f6 none repeat scroll 0 0;
-    color:#424242;
-    box-sizing:border-box;
-    padding:10px 20px;
-    vertical-align:middle;
-    z-index:90000;
-    display:inline-block;
-    -webkit-animation-duration:1s;
-    animation-duration:1s;
-    -webkit-animation-fill-mode:both;
-    animation-fill-mode:both
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.herbyIn {
+    -webkit-animation-name: herbyIn;
+    animation-name: herbyIn;
+}
+
+@-webkit-keyframes herbyOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes herbyOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+    }
+}
+
+.herbyOut {
+    -webkit-animation-name: herbyOut;
+    animation-name: herbyOut;
+}
+
+.herbyCookieConsent {
+    position: fixed;
+    z-index: 90000;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    vertical-align: middle;
+    color: #424242;
+    background: #f6f6f6 none repeat scroll 0 0;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
 .herbyCookieConsent.dark {
-    background-color:#222;
-    color:#fff;
+    color: #fff;
+    background-color: #222;
 }
 
 .herbyCookieConsent.light {
-    background-color:#f6f6f6;
-    color:#424242;
+    color: #424242;
+    background-color: #f6f6f6;
 }
 
-.herbyCookieConsent p{
-    display:inline-block;
-    font-size:12px;
-    width:80%;
-    float:left;
-    font-family:"Helvetica Neue Light","HelveticaNeue-Light","Helvetica Neue","Calibri","Helvetica","Arial";
-    margin-top:5px;
+.herbyCookieConsent p {
+    font-family: 'Helvetica Neue Light','HelveticaNeue-Light','Helvetica Neue','Calibri','Helvetica','Arial';
+    font-size: 12px;
+    display: inline-block;
+    float: left;
+    width: 80%;
+    margin-top: 5px;
 }
 
-.herbyCookieConsent p a{
-    color:#31a8f0;
+.herbyCookieConsent p a {
+    color: #31a8f0;
 }
 
-.herbyCookieConsent .herbyBtn{
-    float:right;
-    text-decoration:none;
-    text-align:center;
-    cursor:pointer;
-    padding:8px;
-    font-size:15px;
-    line-height:15px !important;
-    position:relative;
-    border-radius:5px;
-    overflow:hidden;
-    display:inline-block;
-    word-wrap:break-word;
-    background-color:#d32d27;
-    color:#fff;
-    width:auto;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-    vertical-align:middle;
-    -webkit-tap-highlight-color:rgba(255,255,255,0);
-    tap-highlight-color:rgba(255,255,255,0)
+.herbyCookieConsent .herbyBtn {
+    font-size: 15px;
+    line-height: 15px !important;
+    position: relative;
+    display: inline-block;
+    float: right;
+    overflow: hidden;
+    width: auto;
+    padding: 8px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    word-wrap: break-word;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #d32d27;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    tap-highlight-color: rgba(255,255,255,0);
 }
 
-.herbyCookieConsent .herbyBtn:hover{
-    background-color:#c22a24;border-color:#910101;color:#fff;text-decoration:none;outline:none
-}
-    
-.herbyCookieConsent .herbyBtn:focus{
-    text-decoration:none;outline:none
-}
-
-.herbyCookieConsent .herbyBtn:active{
-    background-color:#af0806;border-color:#af0806;color:#fff;padding-top:13px;padding-bottom:6px
+.herbyCookieConsent .herbyBtn:hover {
+    text-decoration: none;
+    color: #fff;
+    border-color: #910101;
+    outline: none;
+    background-color: #c22a24;
 }
 
-@media all and (max-width:1000px){
-    .herbyCookieConsent p{width:66%;font-size:.8em}
-    .herbyCookieConsent .herbyBtn{padding:9px 8px 8px 8px}
-    .herbyCookieConsent .herbyBtn:active{padding-top:12px;padding-bottom:5px}
+.herbyCookieConsent .herbyBtn:focus {
+    text-decoration: none;
+    outline: none;
 }
 
-@media all and (max-width:500px){
-    .herbyCookieConsent{text-align:center}
-    .herbyCookieConsent p{width:100%;float:none;text-align:left;font-size:.7em}
-    .herbyCookieConsent .herbyBtn{float:none;margin-top:10px;padding:6px 8px 5px 8px}
-    .herbyCookieConsent .herbyBtn:active{padding-top:9px;padding-bottom:2px}
+.herbyCookieConsent .herbyBtn:active {
+    padding-top: 13px;
+    padding-bottom: 6px;
+    color: #fff;
+    border-color: #af0806;
+    background-color: #af0806;
+}
+
+@media all and (max-width:1000px) {
+    .herbyCookieConsent p {
+        font-size: .8em;
+        width: 66%;
+    }
+
+    .herbyCookieConsent .herbyBtn {
+        padding: 9px 8px 8px 8px;
+    }
+
+    .herbyCookieConsent .herbyBtn:active {
+        padding-top: 12px;
+        padding-bottom: 5px;
+    }
+}
+
+@media all and (max-width:500px) {
+    .herbyCookieConsent {
+        text-align: center;
+    }
+
+    .herbyCookieConsent p {
+        font-size: .7em;
+        float: none;
+        width: 100%;
+        text-align: left;
+    }
+
+    .herbyCookieConsent .herbyBtn {
+        float: none;
+        margin-top: 10px;
+        padding: 6px 8px 5px 8px;
+    }
+
+    .herbyCookieConsent .herbyBtn:active {
+        padding-top: 9px;
+        padding-bottom: 2px;
+    }
 }

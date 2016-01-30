@@ -1,0 +1,19 @@
+{
+  "name": "gulp",
+  "description": "lancer en tapant la commande: 'npm install' dans le dossier",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-csso": "latest",
+    "gulp-csscomb": "latest",
+    "gulp-cssbeautify": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-concat": "latest",
+    "gulp-rename": "latest",
+    "gulp-esformatter": "latest",
+    "gulp-uglify": "latest",
+    "gulp-plumber": "latest",
+    "gulp-jshint": "latest"
+  }
+}

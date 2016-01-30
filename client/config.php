@@ -28,7 +28,9 @@ $thisSite->printCSS=false; // chargement de la feuille de style pour l'impressio
 
 /////////////////////////
 if ($thisSite->SERVER == "local") { 
-
+    
+    $thisSite->CSS_OPTIMIZE="";
+    
     $thisSite->DOMAINE= "http://" . $thisSite->LOCALHOST; // sans le slash à la fin 
 	$thisSite->RACINE= $thisSite->DOMAINE . "/Marco/tit/";
     
@@ -40,7 +42,9 @@ if ($thisSite->SERVER == "local") {
      
 }
 if ($thisSite->SERVER == "prod") { 
-
+    
+    $thisSite->CSS_OPTIMIZE="all.min.css"; // "" ou all.css ou all.min.css
+     
     $thisSite->DOMAINE= "http://www.tahitiislandstravel.com"; // sans le slash à la fin 
 	$thisSite->RACINE= $thisSite->DOMAINE . "/demo/";
     

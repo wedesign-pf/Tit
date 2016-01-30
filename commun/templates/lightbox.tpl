@@ -27,16 +27,23 @@
 <link rel="dns-prefetch" href="{$url}">
 {/foreach}
 
-<link href="{$thisSite->DOS_BASE_CSS}reset.css" rel="stylesheet" type="text/css" />
+{if $thisSite->CSS_OPTIMIZE eq ""}
+<link href="{$thisSite->DOS_CLIENT_SKIN}reset.css" rel="stylesheet" type="text/css" />
 <link href="{$thisSite->skin}base.css" rel="stylesheet" type="text/css" />
 <link href="{$thisSite->skin}style.css" rel="stylesheet" type="text/css" />
+<link href="{$thisSite->skin}responsive.css" rel="stylesheet" type="text/css" />
 <link href="{$thisSite->skin}font-awesome.css" rel="stylesheet" type="text/css" />
+{else}
+<link href="{$thisSite->skin}{$thisSite->CSS_OPTIMIZE}" rel="stylesheet" type="text/css" />
+{/if}
+{if $thisSite->printCSS==true}<link href="{$thisSite->skin}print.css" rel="stylesheet" type="text/css" media="print"/>{/if}
+
 {if $PAGE_css_client[0] ne ""}
 {foreach $PAGE_css_client as $elt}
 <link href="{$elt}" rel="stylesheet" type="text/css" />
 {/foreach}
 {/if}
-<link href="{$thisSite->skin}responsive.css" rel="stylesheet" type="text/css" />
+
 
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

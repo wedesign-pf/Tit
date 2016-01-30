@@ -1,8 +1,8 @@
 #mdp_oublie:hover {
-    text-decoration:underline;
-    cursor:pointer;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 #mdp_oublie_sended {
-    color:#05C43F;
+    color: #05c43f;
 }

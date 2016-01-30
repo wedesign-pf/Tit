@@ -1,12 +1,13 @@
+/*! CSS PRINT ****** */
 body {
-	background: white;
-	background-image:none;
+    background: white;
+    background-image: none;
 }
 
 #header {
-	display:none;	
+    display: none;
 }
 
 footer {
-	display:none;	
+    display: none;
 }
